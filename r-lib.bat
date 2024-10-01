@@ -1,0 +1,1 @@
+npm install --save-dev --save-exact babel-loader@8.2.2 & yarn add -D @babel/plugin-proposal-private-methods @babel/plugin-proposal-private-property-in-object

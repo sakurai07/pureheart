@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_02_021427) do
+ActiveRecord::Schema.define(version: 2024_10_04_031510) do
 
   create_table "users", force: :cascade do |t|
     t.string "user_name"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 2024_10_02_021427) do
     t.string "hobby_3"
     t.string "hobby_4"
     t.string "hobby_5"
+  end
+
+  create_table "blocks", force: :cascade do |t|
+    t.string "user_id"
+    t.string "blocked_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "followed_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

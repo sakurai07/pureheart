@@ -1,0 +1,5 @@
+<h1>利用者プロフィール</h1>
+
+<p>メールアドレス:<%= @user.user_name  %></p>
+<p>なまえ:<%= @user.name %></p>
+<p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>

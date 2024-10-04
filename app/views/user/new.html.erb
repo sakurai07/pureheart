@@ -1,0 +1,61 @@
+<h1>利用者登録</h1>
+
+<%= form_with model: @user, url: signup_path, local: true do |form| %>
+    <% if @user.errors.any? %>
+    <strong><%= @user.errors.count %>個のエラーがあります</strong>
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+    <% end %>
+
+<%= form.label :user_name, 'ユーザーネーム' %>
+<%= form.text_field :user_name %>
+
+<br>
+
+<%= form.label :password, 'パスワード' %>
+<%= form.password_field :password %>
+
+<br>
+
+<%= form.label :password, 'パスワード(確認)' %>
+<%= form.password_field :password_confirmation %>
+
+<br>
+
+<%= form.label :name, '名前' %>
+<%= form.text_field :name %>
+
+<%= form.label :grade, '学年' %>
+<%= form.text_field :grade %>
+
+<%= form.label :klass, 'クラス' %>
+<%= form.text_field :klass %>
+
+<br>
+
+<%= form.label :profile, '自己紹介' %>
+<%= form.text_field :profile %>
+
+<br>
+
+<%= form.label :hobby_1, '趣味1' %>
+<%= form.text_field :hobby_1 %>
+
+<%= form.label :hobby_2, '趣味2' %>
+<%= form.text_field :hobby_2 %>
+
+<%= form.label :hobby_3, '趣味3' %>
+<%= form.text_field :hobby_3 %>
+
+<%= form.label :hobby_4, '趣味4' %>
+<%= form.text_field :hobby_4 %>
+
+<%= form.label :hobby_5, '趣味5' %>
+<%= form.text_field :hobby_5 %>
+
+<%= form.submit '登録' %>
+
+<% end %>

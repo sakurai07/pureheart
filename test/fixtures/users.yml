@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  password_digest: MyString
+  name: MyString
+  grade: 1
+  klass: 1
+  icon: 
+  profile: MyText
+  color: MyString
+  hobby_1: MyString
+  hobby_2: MyString
+  hobby_3: MyString
+  hobby_4: MyString
+  hobby_5: MyString
+
+two:
+  user_name: MyString
+  password_digest: MyString
+  name: MyString
+  grade: 1
+  klass: 1
+  icon: 
+  profile: MyText
+  color: MyString
+  hobby_1: MyString
+  hobby_2: MyString
+  hobby_3: MyString
+  hobby_4: MyString
+  hobby_5: MyString

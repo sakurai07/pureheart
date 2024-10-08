@@ -3,3 +3,13 @@
 <p>メールアドレス:<%= @user.user_name  %></p>
 <p>なまえ:<%= @user.name %></p>
 <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
+
+
+
+<p>クラス:<%= @user.grade %><%= @user.klass %></p>
+<p>自己紹介:<%= @user.profile %></p>
+<p>趣味１:<%= @user.hobby_1 %></p>
+<p>　　２:<%= @user.hobby_2 %></p>
+<p>　　３:<%= @user.hobby_3 %></p>
+<p>　　４:<%= @user.hobby_4 %></p>
+<p>　　５:<%= @user.hobby_5 %></p>

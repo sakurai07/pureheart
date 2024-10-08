@@ -28,11 +28,17 @@
 <%= form.label :name, '名前' %>
 <%= form.text_field :name %>
 
-<%= form.label :grade, '学年' %>
-<%= form.text_field :grade %>
+<%# <%= form.label :grade, '学年' %>
+<div class="field">
+    <%= form.label :学年 %>
+    <%= form.select :grade, User.grades.keys.to_a %>
+</div>
 
-<%= form.label :klass, 'クラス' %>
-<%= form.text_field :klass %>
+<%# <%= form.label :klass, 'クラス' %>
+<div class="field">
+    <%= form.label :組 %>
+    <%= form.select :klass, User.klasses.keys.to_a %>
+</div>
 
 <br>
 

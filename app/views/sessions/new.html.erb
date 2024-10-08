@@ -1,0 +1,14 @@
+<h1>ログイン</h1>
+
+<%= form_with model: @session, local: true do |form| %>
+    <%= flash[:danger] %>
+
+    <%= form.label :user_name, 'ユーザーネーム' %>
+    <%= form.user_name_field :user_name %>
+
+    <%= form.label :password, 'パスワード' %>
+    <%= form.password_field :password %>
+
+    <%= form.submit 'ログイン' %>
+
+<% end %>

@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+  before_action :require_login, only: [:show, :destroy]
 
   def new
     @user = User.new
@@ -6,7 +7,14 @@ class UserController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+    image_path = Rails.root. join("public/images/", "rails.jpg")
+    File.open(image_path, "r+b") do |f|
+      @user.icon = f.read
+    end
+
     if @user.save
+      log_in(@user)
       redirect_to profile_path(@user)
     else
       render 'new'
@@ -18,8 +26,8 @@ class UserController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
+    # user = User.find(params[:id])
+    current_user.destroy
     redirect_to signup_path
   end
 

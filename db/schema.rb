@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_04_031510) do
+ActiveRecord::Schema.define(version: 2024_10_09_023920) do
 
   create_table "blocks", force: :cascade do |t|
     t.string "user_id"
@@ -20,8 +20,15 @@ ActiveRecord::Schema.define(version: 2024_10_04_031510) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "followed_user_id"
+    t.string "user_id"
+    t.string "followed_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "name"
+    t.binary "icon"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

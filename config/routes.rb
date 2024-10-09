@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'user#create'
   get '/user/:id', to: 'user#show', as: 'profile'
   delete '/user/:id', to: 'user#destroy', as: 'unsubscribe'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   
 end

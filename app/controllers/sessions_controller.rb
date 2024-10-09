@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to profile_path(user)
     else
-      flash.now[:denger] = "ユーザーネームかパスワードが間違っています"
+      flash.now[:danger] = "ユーザーネームかパスワードが間違っています"
       render "new"
     end
   end

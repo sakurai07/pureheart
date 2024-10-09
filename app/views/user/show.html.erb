@@ -2,6 +2,7 @@
 
 <p>メールアドレス:<%= @user.user_name  %></p>
 <p>なまえ:<%= @user.name %></p>
+<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
 <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
 
 

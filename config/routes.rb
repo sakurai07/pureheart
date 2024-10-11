@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #get 'home/top'
+  root to: 'home#top'
   resources :pictures
   resources :blocks
   resources :follows

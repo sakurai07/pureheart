@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(user_name: params[:user_name].downcase)
     if user && user.authenticate(params[:password])
       log_in(user)
-      redirect_to profile_path(user)
+      redirect_to root_path
     else
       flash.now[:danger] = "ユーザーネームかパスワードが間違っています"
       render "new"

@@ -1,7 +1,14 @@
 <h1>利用者プロフィール</h1>
 
-<p>メールアドレス:<%= @user.user_name  %></p>
+<p>ユーザーネーム:<%= @user.user_name  %></p>
 <p>なまえ:<%= @user.name %></p>
+
+<p>
+    <strong>アイコン:</strong>
+    <% if @user.icon.present? %>
+        <p><%= image_tag(url_for(icon_of_users_path(@user)), size: '100x100') %></p>
+    <% end %>
+</p>
 
 <p>クラス:<%= @user.grade %><%= @user.klass %></p>
 <p>自己紹介:<%= @user.profile %></p>

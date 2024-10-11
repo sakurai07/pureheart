@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/icon_of_pictures/:id', to: 'pictures#send_icon',as: 'icon_of_pictures'
-  
+  get '/icon_of_users/:id', to: 'user#send_icon',as: 'icon_of_users'
 end

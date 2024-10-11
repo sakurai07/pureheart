@@ -31,6 +31,11 @@ class UserController < ApplicationController
     redirect_to signup_path
   end
 
+  def send_icon
+    user = User.find(params[:id])
+    send_data(user.icon, disposition: :inline)
+  end
+
   private
     def user_params
       params.require(:user).permit(:user_name, :password, :password_confirmartion, :name, :grade, :klass, :icon, :profile, :hobby_1)

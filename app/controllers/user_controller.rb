@@ -23,6 +23,8 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    @favorite = Favorite.new
   end
 
   def destroy

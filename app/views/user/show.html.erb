@@ -1,5 +1,14 @@
 <h1>利用者プロフィール</h1>
 
+<% if @user.ravorites.bland? %>
+    <%= form_with(model: @favorite) do |form| %>
+        <%= form.hidden_field :user_id, value: @user.id %>
+        <%= form.submit %>
+    <% end %>
+<% else %>
+    <div>フォロー中</div>
+<% end %>
+
 <p>ユーザーネーム:<%= @user.user_name  %></p>
 <p>なまえ:<%= @user.name %></p>
 

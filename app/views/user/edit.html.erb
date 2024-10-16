@@ -1,0 +1,15 @@
+<%= form_with(model: @user,url:user_path(@user.id)) do |form| %>
+    <% if @user.errors.any? %>
+        <strong><%= @user.errors.count %>個のエラーがあります</strong>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <%= form.label :name, 'なまえ' %>
+    <%= form.text_field :name %>
+
+    <%= form.submit '更新' %>
+<% end %>

@@ -1,12 +1,23 @@
 <h1>利用者プロフィール</h1>
 
-<% if @user.ravorites.bland? %>
-    <%= form_with(model: @favorite) do |form| %>
-        <%= form.hidden_field :user_id, value: @user.id %>
-        <%= form.submit %>
+<% if @user.follows.blank? %>
+    <%= form_with(model: @follow) do |form| %>
+        <%= form.hidden_field :followed_user_id, value: @user.id %>
+        <%= form.submit 'フォロー' %>
     <% end %>
 <% else %>
     <div>フォロー中</div>
+    <div><%= link_to 'フォロー解除', followunsubscribe_path(@follow), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
+<% end %>
+
+<% if @user.blocks.blank? %>
+    <%= form_with(model: @block) do |form| %>
+        <%= form.hidden_field :blocked_user_id, value: @user.id %>
+        <%= form.submit 'ブロック' %>
+    <% end %>
+<% else %>
+    <div>ブロック中</div>
+    <div><%= link_to 'ブロック解除', blockunsubscribe_path(@block), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
 <% end %>
 
 <p>ユーザーネーム:<%= @user.user_name  %></p>

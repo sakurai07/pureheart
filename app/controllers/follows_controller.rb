@@ -28,16 +28,21 @@ class FollowsController < ApplicationController
   # POST /follows or /follows.json
   def create
     @follow = Follow.new(follow_params)
+    @follow.user_id = current_user.id
 
-    respond_to do |format|
+    # respond_to do |format|
       if @follow.save
-        format.html { redirect_to @follow, notice: "Follow was successfully created." }
-        format.json { render :show, status: :created, location: @follow }
+        redirect_to profile_path(current_user.id), notice: "follow was successfully created."
+
+        # format.html { redirect_to @follow, notice: "Follow was successfully created." }
+        # format.json { render :show, status: :created, location: @follow }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @follow.errors, status: :unprocessable_entity }
+        redirect_to profile_path(current_user.id), notice: "follow was successfully failed."
+
+        # format.html { render :new, status: :unprocessable_entity }
+        # format.json { render json: @follow.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /follows/1 or /follows/1.json
@@ -55,12 +60,15 @@ class FollowsController < ApplicationController
 
   # DELETE /follows/1 or /follows/1.json
   def destroy
-    @follow.destroy
+    # @follow.destroy
 
-    respond_to do |format|
-      format.html { redirect_to follows_path, status: :see_other, notice: "Follow was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to follows_path, status: :see_other, notice: "Follow was successfully destroyed." }
+    #   format.json { head :no_content }
+    # end
+
+    @follow.destroy
+    redirect_to profile_path
   end
 
   private

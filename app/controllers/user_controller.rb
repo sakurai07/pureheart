@@ -15,7 +15,7 @@ class UserController < ApplicationController
 
     if @user.save
       log_in(@user)
-      redirect_to profile_path(@user)
+      redirect_to profile_path(current_user.id)
     else
       render 'new'
     end
@@ -23,8 +23,8 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    @favorite = Favorite.new
+    @follow = Follow.new
+    @block = Block.new
   end
 
   def destroy

@@ -2,4 +2,4 @@
 <br>
 <%= image_tag "/images/topchat.png", size: '300x300' %>
 <%= image_tag "/images/topsearch.png", size: '300x300' %>
-<%# <%= link_to image_tag("/images/topprofile.png", size: '300x300'), profile_path(@user) %> %>
+<%= link_to image_tag("/images/topprofile.png", size: '300x300'), profile_path(current_user.id) %>

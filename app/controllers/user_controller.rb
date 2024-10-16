@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :require_login, only: [:show, :destroy]
+  before_action :require_login, only: [:show, :destroy, :edit, :update]
 
   def new
     @user = User.new
@@ -24,7 +24,7 @@ class UserController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @favorite = Favorite.new
+    @favorite = Follow.new
   end
 
   def destroy
@@ -44,7 +44,7 @@ class UserController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user = update(user_update_attributes)
+    if @user.update(user_update_attributes)
       redirect_to profile_path(@user), notice: "User was successfully updated"
     else
       render 'edit'

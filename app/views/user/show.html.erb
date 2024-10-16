@@ -1,6 +1,6 @@
 <h1>利用者プロフィール</h1>
 
-<% if @user.ravorites.bland? %>
+<% if @user.follows.blank? %>
     <%= form_with(model: @favorite) do |form| %>
         <%= form.hidden_field :user_id, value: @user.id %>
         <%= form.submit %>
@@ -26,6 +26,8 @@
 <p>　　３:<%= @user.hobby_3 %></p>
 <p>　　４:<%= @user.hobby_4 %></p>
 <p>　　５:<%= @user.hobby_5 %></p>
+
+<p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
 
 <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
 <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>

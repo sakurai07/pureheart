@@ -4,13 +4,10 @@ Rails.application.routes.draw do
   resources :pictures
   resources :blocks
   resources :follows
-  # resource :user
-  get 'user/:id/edit', to: 'user#edit', as: 'edit_user'
-  patch 'user/:id', to: 'user#update'
-  put 'user/:id', to: 'user#update'
+  resources :user
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # get '/user_edit/:id', to: 'user#edit'
-  # post '/user_update/:id', to: 'user#update'
+
   get '/signup', to: 'user#new'
   post '/signup', to: 'user#create'
   get '/user/:id', to: 'user#show', as: 'profile'

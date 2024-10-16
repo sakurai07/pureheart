@@ -38,5 +38,7 @@
 <p>　　４:<%= @user.hobby_4 %></p>
 <p>　　５:<%= @user.hobby_5 %></p>
 
+<p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
+
 <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
 <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>

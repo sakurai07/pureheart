@@ -3,8 +3,8 @@ class User < ApplicationRecord
   validates :user_name, presence: true
   validates :user_name, uniqueness: true
 
-  validates :password, presence: true
-  validates :password, length: {minimum: 8}
+  validates :password, presence: true, on: :create
+  validates :password, length: {minimum: 8}, on: :create
   has_secure_password
 
   validates :name, presence: true

@@ -1,0 +1,4 @@
+user_name,password_digest,name,grade,klass,profile,hobby_1,hobby_2,hobby_3,hobby_4,hobby_5
+"saki","12345678","さき","3年","4組","やほ","推し活",,,,
+"ayu","12345678","あゆか","3年","4組","あ","囲碁","将棋","柔道","剣道","勉強"
+"tomo","12345678","ともか","3年","4組","うん","保護",,,,

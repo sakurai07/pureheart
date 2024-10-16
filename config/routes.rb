@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'search/top'
+  get 'chat/top'
   #get 'home/top'
   root to: 'home#top'
   resources :pictures
   resources :blocks
   resources :follows
+  resources :user
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/signup', to: 'user#new'

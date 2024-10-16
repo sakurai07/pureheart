@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/top'
+  get 'chat/top'
   #get 'home/top'
   root to: 'home#top'
   resources :pictures

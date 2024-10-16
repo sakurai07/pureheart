@@ -11,83 +11,83 @@ ja:
       follow: フォロー
       block: ブロック
 
-  attributes:
-    user:
-      id: ＩＤ
-      user_name: ユーザー名
-      password_digest: パスワード
-      name: 利用者名
-      grade: 学年
-      class: 組
-      icon: アイコン
-      profile: 自己紹介
-      color: 背景色
-      hobby_1: 趣味１
-      hobby_2: 趣味２
-      hobby_3: 趣味３
-      hobby_4: 趣味４
-      hobby_5: 趣味５
-      created_at: 登録日時
-      updated_at: 更新日時
+    attributes:
+      user:
+        id: ＩＤ
+        user_name: ユーザー名
+        password_digest: パスワード
+        name: 利用者名
+        grade: 学年
+        class: 組
+        icon: アイコン
+        profile: 自己紹介
+        color: 背景色
+        hobby_1: 趣味１
+        hobby_2: 趣味２
+        hobby_3: 趣味３
+        hobby_4: 趣味４
+        hobby_5: 趣味５
+        created_at: 登録日時
+        updated_at: 更新日時
     
-    groups:
-      id: ＩＤ
-      group_name: グループ名
-      user_id: 作成者
-      comment: 一言
-      hobby_1: 趣味１
-      hobby_2: 趣味２
-      hobby_3: 趣味３
-      hobby_4: 趣味４
-      hobby_5: 趣味５
-      created_at: 登録日時
-      updated_at: 更新日時
+      groups:
+        id: ＩＤ
+        group_name: グループ名
+        user_id: 作成者
+        comment: 一言
+        hobby_1: 趣味１
+        hobby_2: 趣味２
+        hobby_3: 趣味３
+        hobby_4: 趣味４
+        hobby_5: 趣味５
+        created_at: 登録日時
+        updated_at: 更新日時
 
-    groupmember:
-      id: ＩＤ
-      user_id: ユーザー名
-      group_id: グループ名
-      crated_at: 登録日時
-      updated_at: 更新日時
+      groupmember:
+        id: ＩＤ
+        user_id: ユーザー名
+        group_id: グループ名
+        crated_at: 登録日時
+        updated_at: 更新日時
 
-    groupmessage:
-      id: ＩＤ
-      user_id: 送信者
-      message: メッセージ
-      group_id: グループ名
-      crated_at: 登録日時
-      updated_at: 更新日時
+      groupmessage:
+        id: ＩＤ
+        user_id: 送信者
+        message: メッセージ
+        group_id: グループ名
+        crated_at: 登録日時
+        updated_at: 更新日時
 
-    room:
-      id: ＩＤ
-      crated_at: 登録日時
-      updated_at: 更新日時
+      room:
+        id: ＩＤ
+        crated_at: 登録日時
+        updated_at: 更新日時
 
-    massage:
-      id: ＩＤ
-      user_id: 送信者
-      room_id: 部屋
-      message: メッセージ
-      crated_at: 登録日時
-      updated_at: 更新日時
+      massage:
+        id: ＩＤ
+        user_id: 送信者
+        room_id: 部屋
+        message: メッセージ
+        crated_at: 登録日時
+        updated_at: 更新日時
 
-    member:
-      id: ＩＤ
-      user_id: ユーザー名
-      room_id: 部屋
-      created_at: 登録日時
-      updated_at: 更新日時
+      member:
+        id: ＩＤ
+        user_id: ユーザー名
+        room_id: 部屋
+        created_at: 登録日時
+        updated_at: 更新日時
 
-    follow:
-      id: ＩＤ
-      user_id: ユーザー名
-      followed_user_id: ユーザー名
-      created_at: 登録日時
-      updated_at: 更新日時
+      follow:
+        id: ＩＤ
+        user_id: ユーザー名
+        followed_user_id: ユーザー名
+        created_at: 登録日時
+        updated_at: 更新日時
 
-    block:
-      id: ＩＤ
-      user_id: ユーザー名
-      blocked_user_id: ユーザー名
-      created_at: 登録日時
-      updated_at: 更新日時
+      block:
+        id: ＩＤ
+        user_id: ユーザー名
+        blocked_user_id: ユーザー名
+        created_at: 登録日時
+        updated_at: 更新日時

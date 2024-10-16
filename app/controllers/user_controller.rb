@@ -23,13 +23,8 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-<<<<<<< HEAD
     @follow = Follow.new
     @block = Block.new
-=======
-
-    @favorite = Follow.new
->>>>>>> 4e9b87023c70adba60c4ad5a75b3b3b09f2ff73b
   end
 
   def destroy

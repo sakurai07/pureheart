@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :set_follow, only: %i[ show edit update destroy ]
+  before_action :set_follow, only: %i[ show edit update ]
 
   def top
     @follows = Follow.all.order(user_id: :asc)
@@ -32,12 +32,12 @@ class FollowsController < ApplicationController
 
     # respond_to do |format|
       if @follow.save
-        redirect_to profile_path(current_user.id), notice: "follow was successfully created."
+        redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully created."
 
         # format.html { redirect_to @follow, notice: "Follow was successfully created." }
         # format.json { render :show, status: :created, location: @follow }
       else
-        redirect_to profile_path(current_user.id), notice: "follow was successfully failed."
+        redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully failed."
 
         # format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @follow.errors, status: :unprocessable_entity }
@@ -66,9 +66,9 @@ class FollowsController < ApplicationController
     #   format.html { redirect_to follows_path, status: :see_other, notice: "Follow was successfully destroyed." }
     #   format.json { head :no_content }
     # end
-
+    @follow = Follow.find_by(followed_user_id: params[:id] , user_id: current_user.id)
     @follow.destroy
-    redirect_to profile_path
+    redirect_to profile_path(@follow.followed_user_id)
   end
 
   private

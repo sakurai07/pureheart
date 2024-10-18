@@ -23,8 +23,13 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @follow = Follow.new
-    @block = Block.new
+    @follow_new = Follow.new
+    @block_new = Block.new
+    @follow = Follow.find_by(followed_user_id: @user.id , user_id: current_user.id)
+    @block = Block.find_by(blocked_user_id: @user.id, user_id: current_user.id)
+
+    # @user = User.find(params[:id])
+
   end
 
   def destroy

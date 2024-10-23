@@ -11,5 +11,38 @@
     <%= form.label :name, 'なまえ' %>
     <%= form.text_field :name %>
 
+    <%= form.label :profile, '自己紹介' %>
+    <%= form.text_field :profile %>
+
+    <div class="field">
+    <%= form.label :icon %>
+    <%= form.file_field :icon %>
+    </div>
+
+    <div class="field">
+    <%= form.label :学年 %>
+    <%= form.select :grade, User.grades.keys.to_a %>
+    </div>
+
+    <div class="field">
+    <%= form.label :組 %>
+    <%= form.select :klass, User.klasses.keys.to_a %>
+    </div>
+
+    <%= form.label :hobby_1, '趣味1' %>
+    <%= form.text_field :hobby_1 %>
+
+    <%= form.label :hobby_2, '趣味2' %>
+    <%= form.text_field :hobby_2 %>
+
+    <%= form.label :hobby_3, '趣味3' %>
+    <%= form.text_field :hobby_3 %>
+
+    <%= form.label :hobby_4, '趣味4' %>
+    <%= form.text_field :hobby_4 %>
+
+    <%= form.label :hobby_5, '趣味5' %>
+    <%= form.text_field :hobby_5 %>
+
     <%= form.submit '更新' %>
 <% end %>

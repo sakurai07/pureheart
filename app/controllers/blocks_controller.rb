@@ -1,5 +1,5 @@
 class BlocksController < ApplicationController
-  before_action :set_block, only: %i[ show edit update destroy ]
+  before_action :set_block, only: %i[ show edit update ]
 
   # GET /blocks or /blocks.json
   def index
@@ -22,16 +22,21 @@ class BlocksController < ApplicationController
   # POST /blocks or /blocks.json
   def create
     @block = Block.new(block_params)
+    @block.user_id = current_user.id
 
-    respond_to do |format|
+    # respond_to do |format|
       if @block.save
-        format.html { redirect_to @block, notice: "Block was successfully created." }
-        format.json { render :show, status: :created, location: @block }
+        redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully created."
+
+        # format.html { redirect_to @block, notice: "Block was successfully created." }
+        # format.json { render :show, status: :created, location: @block }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @block.errors, status: :unprocessable_entity }
+        redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully failed."
+
+        # format.html { render :new, status: :unprocessable_entity }
+        # format.json { render json: @block.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /blocks/1 or /blocks/1.json
@@ -49,12 +54,15 @@ class BlocksController < ApplicationController
 
   # DELETE /blocks/1 or /blocks/1.json
   def destroy
-    @block.destroy
+    # @block.destroy
 
-    respond_to do |format|
-      format.html { redirect_to blocks_path, status: :see_other, notice: "Block was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to blocks_path, status: :see_other, notice: "Block was successfully destroyed." }
+    #   format.json { head :no_content }
+    # end
+    @block = Block.find_by(blocked_user_id: params[:id], user_id: current_user.id)
+    @block.destroy
+    redirect_to profile_path(@block.blocked_user_id)
   end
 
   private

@@ -1,8 +1,13 @@
 class UserController < ApplicationController
-  before_action :require_login, only: [:show, :destroy, :edit, :update]
+  before_action :require_login, only: [:show, :destroy, :edit, :update, :index]
+
+  def index
+    @user = User.all
+  end
 
   def new
     @user = User.new
+
   end
 
   def create
@@ -15,16 +20,24 @@ class UserController < ApplicationController
 
     if @user.save
       log_in(@user)
-      redirect_to profile_path(@user)
+      redirect_to root_path
     else
       render 'new'
     end
+
+    
+
   end
 
   def show
     @user = User.find(params[:id])
+    @follow_new = Follow.new
+    @block_new = Block.new
+    @follow = Follow.find_by(followed_user_id: @user.id , user_id: current_user.id)
+    @block = Block.find_by(blocked_user_id: @user.id, user_id: current_user.id)
 
-    @favorite = Follow.new
+    # @user = User.find(params[:id])
+
   end
 
   def destroy
@@ -54,17 +67,18 @@ class UserController < ApplicationController
   private
 
   def user_params_update
-    params.require(:user).permit(:name, :icon)
+    params.require(:user).permit(:name, :icon, :grade, :klass, :profile, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5)
   end
 
   def user_update_attributes
     if user_params_update[:icon] == nil
     {
-      name: user_params_update[:name]
+      name: user_params_update[:name], profile: user_params_update[:profile], grade: user_params_update[:grade], klass: user_params_update[:klass], hobby_1: user_params_update[:hobby_1], hobby_2: user_params_update[:hobby_2], hobby_3: user_params_update[:hobby_3], hobby_4: user_params_update[:hobby_4], hobby_5: user_params_update[:hobby_5]
+
     }
     else
     {
-      name: user_params_update[:name], icon: user_params_update[:icon].read
+      name: user_params_update[:name], profile: user_params_update[:profile], grade: user_params_update[:grade], klass: user_params_update[:klass], hobby_1: user_params_update[:hobby_1], hobby_2: user_params_update[:hobby_2], hobby_3: user_params_update[:hobby_3], hobby_4: user_params_update[:hobby_4], hobby_5: user_params_update[:hobby_5], icon: user_params_update[:icon].read
     }
     end
   end

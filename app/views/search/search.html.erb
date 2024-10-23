@@ -1,0 +1,5 @@
+<h1>友だち検索</h1>
+<p>ハッシュタグ検索</p>
+<%= form_tag(user_result_path) do %>
+    <%= text_field_tag "search[hobby]" %><%= submit_tag "検索" %>
+<% end %>

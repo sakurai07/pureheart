@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get 'search/top'
+
+  get '/user_search', to:'search#search'
+  post '/user_result', to:'search#result'
+
   get 'chat/top'
   #get 'home/top'
   root to: 'home#top'

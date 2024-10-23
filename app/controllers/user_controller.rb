@@ -7,6 +7,7 @@ class UserController < ApplicationController
 
   def new
     @user = User.new
+
   end
 
   def create
@@ -19,10 +20,13 @@ class UserController < ApplicationController
 
     if @user.save
       log_in(@user)
-      redirect_to profile_path(current_user.id)
+      redirect_to root_path
     else
       render 'new'
     end
+
+    
+
   end
 
   def show

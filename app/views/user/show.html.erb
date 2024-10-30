@@ -1,9 +1,13 @@
-<h1>利用者プロフィール</h1>
+<h1>プロフィール</h1>
 
 <% if @user.id == current_user.id %>
-    <p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p>
-    <p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p>
-    <p><%= link_to 'ブロック中', blocks_path(@user.id) %></p>
+    <table>
+        <tr>
+        <td><p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p></td>
+        <td><p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p></td>
+        <td><p><%= link_to 'ブロック中', blocks_path(@user.id) %></p></td>
+        </tr>
+    </table>
 
 <% else %>
     <table>

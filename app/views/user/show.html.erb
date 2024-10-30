@@ -1,29 +1,36 @@
 <h1>利用者プロフィール</h1>
 
 <% if @user.id == current_user.id %>
-    <p><% %></p>
+    <p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p>
+    <p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p>
+    <p><%= link_to 'ブロック中', blocks_path(@user.id) %></p>
 
 <% else %>
-    <% if @follow.blank? %>
-        <%= form_with(model: @follow_new) do |form| %>
-            <%= form.hidden_field :followed_user_id, value: @user.id %>
-            <%= form.submit 'フォロー' %>
-        <% end %>
-    <% else %>
-        <div>フォロー中</div>
-        <div><%= link_to 'フォロー解除', followunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
-    <% end %>
-
-    <% if @block.blank? %>
-        <%= form_with(model: @block_new) do |form| %>
-            <%= form.hidden_field :blocked_user_id, value: @user.id %>
-            <%= form.submit 'ブロック' %>
-        <% end %>
-    <% else %>
-        <div>ブロック中</div>
-        <div><%= link_to 'ブロック解除', blockunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
-    <% end %>
+    <table>
+        <tr>
+        <td><% if @follow.blank? %>
+                <%= form_with(model: @follow_new) do |form| %>
+                    <%= form.hidden_field :followed_user_id, value: @user.id %>
+                    <%= form.submit 'フォロー' %>
+                <% end %>
+            <% else %>
+                <div>フォロー中</div>
+                <div><%= link_to 'フォロー解除', followunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
+            <% end %></td>
+        <td>　</td>
+        <td><% if @block.blank? %>
+                <%= form_with(model: @block_new) do |form| %>
+                    <%= form.hidden_field :blocked_user_id, value: @user.id %>
+                    <%= form.submit 'ブロック' %>
+                <% end %>
+            <% else %>
+                <div>ブロック中</div>
+                <div><%= link_to 'ブロック解除', blockunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
+            <% end %></td>
+        </tr>
+    </table>
 <% end%>
+
 
 <p>ユーザーネーム:<%= @user.user_name  %></p>
 <p>なまえ:<%= @user.name %></p>
@@ -37,11 +44,11 @@
 
 <p>クラス:<%= @user.grade %><%= @user.klass %></p>
 <p>自己紹介:<%= @user.profile %></p>
-<p>趣味１:<%= @user.hobby_1 %></p>
-<p>　　２:<%= @user.hobby_2 %></p>
-<p>　　３:<%= @user.hobby_3 %></p>
-<p>　　４:<%= @user.hobby_4 %></p>
-<p>　　５:<%= @user.hobby_5 %></p>
+<p>趣味１ ＃<%= @user.hobby_1 %></p>
+<p>　　２ ＃<%= @user.hobby_2 %></p>
+<p>　　３ ＃<%= @user.hobby_3 %></p>
+<p>　　４ ＃<%= @user.hobby_4 %></p>
+<p>　　５ ＃<%= @user.hobby_5 %></p>
 
 <p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
 

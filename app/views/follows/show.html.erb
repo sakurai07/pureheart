@@ -1,24 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<%# <p>
-  <strong>User:</strong>
-  <%= @follow.user_id %>
-<%# </p> %>
-
-<%# <p>
-  <strong>Followed user:</strong>
-  <%= @follow.followed_user_id %>
-<%# </p> %>
+<h1>フォロー中</h1>
 
 <table border="1">
-  <tr><th>フォローユーザー</th><th>フォロワー</th></tr>
-    <% @follows.each do |follow| %>
+  <thead>
     <tr>
-      <td><%= follow.user_id %></td>
-      <td><%= follow.followed_user_id %></td>
+      <th>名前</th>
+      <%# <th>フォロワー</th> %>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+      <% @follower.each do |follow| %>
+        <tr>
+          <td><%= follow.user.name%></td>
+          <%# <td><%= follow.followed_user.name%></td>
+          <td><%= link_to 'プロフィール', profile_path(follow.user_id) %> </td>
+          <%# <td><%= link_to 'Edit', edit_follow_path(follow) </td> %>
+          <%# <td><%= link_to 'Destroy', follow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+      
+
+  </tbody>
 </table>
 
-<%= link_to 'Edit', edit_follow_path(@follow) %> |
-<%= link_to 'Back', follows_path %>
+<br>

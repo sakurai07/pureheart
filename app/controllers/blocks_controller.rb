@@ -3,7 +3,7 @@ class BlocksController < ApplicationController
 
   # GET /blocks or /blocks.json
   def index
-    @blocks = Block.all
+    @block = Block.where("user_id=?", current_user.id)
   end
 
   # GET /blocks/1 or /blocks/1.json

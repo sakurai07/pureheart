@@ -35,7 +35,7 @@ class UserController < ApplicationController
     @block_new = Block.new
     @follow = Follow.find_by(followed_user_id: @user.id , user_id: current_user.id)
     @block = Block.find_by(blocked_user_id: @user.id, user_id: current_user.id)
-
+    key = params[:key]
     # @user = User.find(params[:id])
 
   end
@@ -84,7 +84,7 @@ class UserController < ApplicationController
   end
 
     def user_params
-      params.require(:user).permit(:user_name, :password, :password_confirmartion, :name, :grade, :klass, :icon, :profile, :hobby_1)
+      params.require(:user).permit(:user_name, :password, :password_confirmartion, :name, :grade, :klass, :icon, :profile, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5)
     end
     
 end

@@ -1,65 +1,103 @@
-<h1>利用者登録</h1>
+<div class = "row">
 
-<%= form_with model: @user, url: signup_path, local: true do |form| %>
-    <% if @user.errors.any? %>
-    <strong><%= @user.errors.count %>個のエラーがあります</strong>
-    <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <div class = "col-md-2"></div>
+
+    <div class = "col-md-8">
+        <h1>利用者登録</h1>
+
+        <div class = "mozi">
+        <%= form_with model: @user, url: signup_path, local: true do |form| %>
+                    <% if @user.errors.any? %>
+                    <%# <strong><%= @user.errors.count個のエラーがあります</strong> %>
+                    <ul>
+                        <% @user.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                    <% end %>
+        </div>
+
+        <div class = "row">
+            <div class = "col-md-6">
+                
+
+                <%= form.label :user_name, 'ユーザーネーム', class: "form-label" %>
+                <%= form.text_field :user_name, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :password, 'パスワード', class: "form-label" %>
+                <%= form.password_field :password, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :password, 'パスワード(確認)', class: "form-label" %>
+                <%= form.password_field :password_confirmation, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :name, 'なまえ', class: "form-label" %>
+                <%= form.text_field :name, class: "form-control" %>
+
+                <br>
+
+                <%# <%= form.label :grade, '学年' %>
+                <%# <div class="field"> %>
+                    <%= form.label :学年, class: "form-label" %>
+                    <%= form.select :grade, User.grades.keys.to_a, {}, class: "form-select" %>
+                <%# </div> %>
+
+                <br>
+
+                <%# <%= form.label :klass, 'クラス' %>
+                <%# <div class="field"> %>
+                    <%= form.label :組, class: "form-label" %>
+                    <%= form.select :klass, User.klasses.keys.to_a, {}, class: "form-select" %>
+                <%# </div> %>
+
+            </div>
+
+            <div class = "col-md-6">
+
+                <%= form.label :hobby_1, '趣味1', class: "form-label" %>
+                <%= form.text_field :hobby_1, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :hobby_2, '趣味2', class: "form-label" %>
+                <%= form.text_field :hobby_2, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :hobby_3, '趣味3', class: "form-label" %>
+                <%= form.text_field :hobby_3, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :hobby_4, '趣味4', class: "form-label" %>
+                <%= form.text_field :hobby_4, class: "form-control" %>
+
+                <br>
+
+                <%= form.label :hobby_5, '趣味5', class: "form-label" %>
+                <%= form.text_field :hobby_5, class: "form-control" %>
+            </div>
+        </div>
+
+        <br>
+
+        <%= form.label :profile, '自己紹介', class: "form-label" %>
+        <%= form.text_area :profile, class: 'form-control', width: 100, row: 5 %>
+
+        <p></p>
+
+        <%= form.submit '登録', class: "btn btn-secondary" %>
+
+        <p></p>
+
+        <p><%= link_to 'ログイン画面に戻る', login_path %></p>
+
         <% end %>
-    </ul>
-    <% end %>
-
-<%= form.label :user_name, 'ユーザーネーム' %>
-<%= form.text_field :user_name %>
-
-<br>
-
-<%= form.label :password, 'パスワード' %>
-<%= form.password_field :password %>
-
-<br>
-
-<%= form.label :password, 'パスワード(確認)' %>
-<%= form.password_field :password_confirmation %>
-
-<br>
-
-<%= form.label :name, 'なまえ' %>
-<%= form.text_field :name %>
-
-<%# <%= form.label :grade, '学年' %>
-<div class="field">
-    <%= form.label :学年 %>
-    <%= form.select :grade, User.grades.keys.to_a %>
+    </div>
+    <div class = "col-md-2"></div>
 </div>
-
-<%# <%= form.label :klass, 'クラス' %>
-<div class="field">
-    <%= form.label :組 %>
-    <%= form.select :klass, User.klasses.keys.to_a %>
-</div>
-
-<%= form.label :profile, '自己紹介' %>
-<%= form.text_field :profile %>
-
-<%= form.label :hobby_1, '趣味1' %>
-<%= form.text_field :hobby_1 %>
-
-<%= form.label :hobby_2, '趣味2' %>
-<%= form.text_field :hobby_2 %>
-
-<%= form.label :hobby_3, '趣味3' %>
-<%= form.text_field :hobby_3 %>
-
-<%= form.label :hobby_4, '趣味4' %>
-<%= form.text_field :hobby_4 %>
-
-<%= form.label :hobby_5, '趣味5' %>
-<%= form.text_field :hobby_5 %>
-
-<%= form.submit '登録' %>
-
-<td><%= link_to 'ログイン画面に戻る', login_path %></td>
-
-<% end %>

@@ -2,18 +2,25 @@ class FollowsController < ApplicationController
   before_action :set_follow, only: %i[ show edit update ]
 
   def top
-    @follows = Follow.all.order(user_id: :asc)
+    @follow = Follow.all.order(user_id: :asc)
   end
 
 
   # GET /follows or /follows.json
-  def index
-    @follows = Follow.all
+  def index   
+    key = params[:key]
+    if key == '1' 
+      @follow = Follow.where("user_id=?", current_user.id)
+    end
+    if key == '2' 
+      @follow = Follow.where("followed_user_id=?", current_user.id)
+    end
   end
 
   # GET /follows/1 or /follows/1.json
   def show
-    @follows = Follow.all
+    # @follow = Follow.all
+    
   end
 
   # GET /follows/new

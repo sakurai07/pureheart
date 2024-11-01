@@ -35,7 +35,7 @@ class UserController < ApplicationController
     @block_new = Block.new
     @follow = Follow.find_by(followed_user_id: @user.id , user_id: current_user.id)
     @block = Block.find_by(blocked_user_id: @user.id, user_id: current_user.id)
-
+    key = params[:key]
     # @user = User.find(params[:id])
 
   end

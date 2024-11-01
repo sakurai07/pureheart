@@ -67,5 +67,7 @@
     <%= link_to '戻る', follows_path(@user.id , key: 2) %>
 <% elsif params[:key] == '5' %>
     <%= link_to '戻る', blocks_path(@user.id) %>
+<% elsif params[:key] == '6' %>
+    <p><a href="javascript:window.open('about:blank','_self').close();">閉じる</a></p>
 <% end %>
 </p>

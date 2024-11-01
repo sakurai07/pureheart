@@ -1,6 +1,14 @@
 検索結果
 <br>
-<%= @user %>
-<br>
-<br>
+<table>
+  <tbody>
+    <% @user.each do |user| %>
+      <tr>
+        <td><%= image_tag(url_for(icon_of_users_path(user)), size: '100x100') %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to 'プロフィール', user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to '検索画面', user_search_path %>

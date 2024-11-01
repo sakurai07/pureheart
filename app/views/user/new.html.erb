@@ -5,6 +5,7 @@
     <div class = "col-md-8">
         <h1>利用者登録</h1>
 
+        <div class = "mozi">
         <%= form_with model: @user, url: signup_path, local: true do |form| %>
                     <% if @user.errors.any? %>
                     <%# <strong><%= @user.errors.count個のエラーがあります</strong> %>
@@ -14,6 +15,7 @@
                         <% end %>
                     </ul>
                     <% end %>
+        </div>
 
         <div class = "row">
             <div class = "col-md-6">

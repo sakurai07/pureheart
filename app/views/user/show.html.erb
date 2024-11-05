@@ -1,58 +1,101 @@
-<h1>プロフィール</h1>
+<div class = "row">
 
-<% if @user.id == current_user.id %>
-    <table>
-        <tr>
-        <td><p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p></td>
-        <td><p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p></td>
-        <td><p><%= link_to 'ブロック中', blocks_path(@user.id) %></p></td>
-        </tr>
-    </table>
+<div class = "col-md-2"></div>
 
-<% else %>
-    <table>
-        <tr>
-        <td><% if @follow.blank? %>
-                <%= form_with(model: @follow_new) do |form| %>
-                    <%= form.hidden_field :followed_user_id, value: @user.id %>
-                    <%= form.submit 'フォロー' %>
-                <% end %>
+    <h1>プロフィール</h1>
+
+    <div class = "row">
+        <div class = "col-md-2">
+            <% if @user.icon.present? %>
+                <p><%= image_tag(url_for(icon_of_users_path(@user)), size: '100x100') %></p>
+            <% end %>
+        </div>
+
+        <div class = "col-md-2">
+            <p><%# ユーザーネーム: %><%= @user.user_name  %></p>
+            <p><%# クラス: %><%= @user.grade %><%= @user.klass %></p>
+            <p class = "name"><%# なまえ: %><%= @user.name %></p>
+        </div>
+
+        <div class = "col-md-4">
+            <% if @user.id == current_user.id %>
+                <table>
+                    <tr>
+                    <td><p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p></td>
+                    <td><p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p></td>
+                    <td><p><%= link_to 'ブロック中', blocks_path(@user.id) %></p></td>
+                    </tr>
+                </table>
+
             <% else %>
-                <div>フォロー中</div>
-                <div><%= link_to 'フォロー解除', followunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
-            <% end %></td>
-        <td>　</td>
-        <td><% if @block.blank? %>
-                <%= form_with(model: @block_new) do |form| %>
-                    <%= form.hidden_field :blocked_user_id, value: @user.id %>
-                    <%= form.submit 'ブロック' %>
-                <% end %>
-            <% else %>
-                <div>ブロック中</div>
-                <div><%= link_to 'ブロック解除', blockunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
-            <% end %></td>
-        </tr>
-    </table>
-<% end%>
+                <table>
+                    <tr>
+                    <td><% if @follow.blank? %>
+                            <%= form_with(model: @follow_new) do |form| %>
+                                <%= form.hidden_field :followed_user_id, value: @user.id %>
+                                <%= form.submit 'フォロー' %>
+                            <% end %>
+                        <% else %>
+                            <div>フォロー中</div>
+                            <div><%= link_to 'フォロー解除', followunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
+                        <% end %></td>
+                    <td>　</td>
+                    <td><% if @block.blank? %>
+                            <%= form_with(model: @block_new) do |form| %>
+                                <%= form.hidden_field :blocked_user_id, value: @user.id %>
+                                <%= form.submit 'ブロック' %>
+                            <% end %>
+                        <% else %>
+                            <div>ブロック中</div>
+                            <div><%= link_to 'ブロック解除', blockunsubscribe_path(@user.id), method: :delete, data: { confirm: '本当に解除しますか？' }%></div>
+                        <% end %></td>
+                    </tr>
+                </table>
+            <% end %>
+        </div>
+    </div>
+
+    <div class = "row">
+        <p>
+            <%# 趣味１ %> #<%= @user.hobby_1 %>
+            <% if @user.hobby_2.present? %>
+                <%# ２ %> #<%= @user.hobby_2 %>
+            <% end %>
+            <% if @user.hobby_3.present? %>
+                <%# ３ %> #<%= @user.hobby_3 %>
+            <% end %>
+            <% if @user.hobby_4.present? %>
+                <%# ４ %> #<%= @user.hobby_4 %>
+            <% end %>
+            <% if @user.hobby_5.present? %>
+                <%# ５ %> #<%= @user.hobby_5 %>
+            <% end %>
+        </p>
+    </div>
+
+    <div class = "row">
+        <p></p>
+        <strong>自己紹介</strong>
+        <p><%= @user.profile %></p>
+    </div>
+
+    <p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
+
+    <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+    <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
 
 
-<p>ユーザーネーム:<%= @user.user_name  %></p>
-<p>なまえ:<%= @user.name %></p>
-
-<p>
-    <strong>アイコン:</strong>
-    <% if @user.icon.present? %>
-        <p><%= image_tag(url_for(icon_of_users_path(@user)), size: '100x100') %></p>
+    <p>
+    <% if params[:key] == '3' %>
+        <%= link_to '戻る', follows_path(@user.id , key: 1) %>
+    <% elsif params[:key] =='4' %>
+        <%= link_to '戻る', follows_path(@user.id , key: 2) %>
+    <% elsif params[:key] == '5' %>
+        <%= link_to '戻る', blocks_path(@user.id) %>
     <% end %>
-</p>
+    </p>
 
-<p>クラス:<%= @user.grade %><%= @user.klass %></p>
-<p>自己紹介:<%= @user.profile %></p>
-<p>趣味１ ＃<%= @user.hobby_1 %></p>
-<p>　　２ ＃<%= @user.hobby_2 %></p>
-<p>　　３ ＃<%= @user.hobby_3 %></p>
-<p>　　４ ＃<%= @user.hobby_4 %></p>
-<p>　　５ ＃<%= @user.hobby_5 %></p>
+    <div class = "col-md-2"></div>
 
 <p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
 
@@ -67,5 +110,7 @@
     <%= link_to '戻る', follows_path(@user.id , key: 2) %>
 <% elsif params[:key] == '5' %>
     <%= link_to '戻る', blocks_path(@user.id) %>
+<% elsif params[:key] == '6' %>
+    <p><a href="javascript:window.open('about:blank','_self').close();">閉じる</a></p>
 <% end %>
 </p>

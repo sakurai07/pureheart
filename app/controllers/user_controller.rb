@@ -30,6 +30,7 @@ class UserController < ApplicationController
   end
 
   def show
+    
     @user = User.find(params[:id])
     @follow_new = Follow.new
     @block_new = Block.new
@@ -37,6 +38,7 @@ class UserController < ApplicationController
     @block = Block.find_by(blocked_user_id: @user.id, user_id: current_user.id)
     key = params[:key]
     # @user = User.find(params[:id])
+    session["key_windowclose_#{@user.id}"] ||= params[:key_windowclose]
 
   end
 

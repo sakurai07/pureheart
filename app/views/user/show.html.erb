@@ -5,7 +5,7 @@
         <tr>
         <td><p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p></td>
         <td><p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p></td>
-        <td><p><%= link_to 'ブロック中', blocks_path(@user.id) %></p></td>
+        <td><p><%= link_to 'ブロック中', blocks_path(@user.id , key_block: 5) %></p></td>
         </tr>
     </table>
 
@@ -54,20 +54,31 @@
 <p>　　４ ＃<%= @user.hobby_4 %></p>
 <p>　　５ ＃<%= @user.hobby_5 %></p>
 
-<p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
 
-<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
-<p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
+<% if @user.id == current_user.id %>
 
+    <p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
 
-<p>
-<% if params[:key] == '3' %>
-    <%= link_to '戻る', follows_path(@user.id , key: 1) %>
-<% elsif params[:key] =='4' %>
-    <%= link_to '戻る', follows_path(@user.id , key: 2) %>
-<% elsif params[:key] == '5' %>
-    <%= link_to '戻る', blocks_path(@user.id) %>
-<% elsif params[:key] == '6' %>
-    <p><a href="javascript:window.open('about:blank','_self').close();">閉じる</a></p>
+    <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+    <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
+<% else %>
+
+    <p>
+    <% if params[:key] == '3' %>
+        <%= link_to '戻る', follows_path(@user.id , key: 1) %>
+    <% end %>
+
+    <% if params[:key] =='4' %>
+        <%= link_to '戻る', follows_path(@user.id , key: 2) %>
+    <% end %>
+
+    <% if session["key_block"] == '5' %>
+        <%= link_to '戻る', blocks_path(@user.id) %>
+    <%end%>
+
+    <% if session["key_windowclose_#{@user.id}"] == '6' %>
+        <p><a href="javascript:window.open('about:blank','_self').close();">閉じる</a></p>
+    <% end %>
+    </p>
+
 <% end %>
-</p>

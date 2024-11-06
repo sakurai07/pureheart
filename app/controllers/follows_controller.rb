@@ -15,6 +15,7 @@ class FollowsController < ApplicationController
     if key == '2' 
       @follow = Follow.where("followed_user_id=?", current_user.id)
     end
+    
   end
 
   # GET /follows/1 or /follows/1.json

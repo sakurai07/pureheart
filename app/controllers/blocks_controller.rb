@@ -4,6 +4,8 @@ class BlocksController < ApplicationController
   # GET /blocks or /blocks.json
   def index
     @block = Block.where("user_id=?", current_user.id)
+
+    session["key_block"] ||= params[:key_block]
   end
 
   # GET /blocks/1 or /blocks/1.json

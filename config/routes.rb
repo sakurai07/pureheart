@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :members
+  resources :messages
+  resources :rooms
+  resources :groupmessages
+  resources :groupmembers
+  resources :groups
   get 'search/top'
 
   get '/user_search', to:'search#search'

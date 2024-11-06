@@ -9,13 +9,13 @@ class SearchController < ApplicationController
     elsif params[:search].present? && params[:search][:klass].present?
       @user = User.where("id <> #{current_user.id} and klass like '%#{params[:search][:klass]}'").order(created_at: :desc)
     else
-      @user = User.all.order(created_at: :desc)
+      @user = []
+      flash.now[:danger] = "検索条件を入力してください"
     end
   end
 
   def search
     # @user = User.all.order(created_at: :desc)
     # render :top
-    
   end
 end

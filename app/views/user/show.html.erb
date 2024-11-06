@@ -83,26 +83,7 @@
 
     <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
     <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
-
-
-    <p>
-    <% if params[:key] == '3' %>
-        <%= link_to '戻る', follows_path(@user.id , key: 1) %>
-    <% elsif params[:key] =='4' %>
-        <%= link_to '戻る', follows_path(@user.id , key: 2) %>
-    <% elsif params[:key] == '5' %>
-        <%= link_to '戻る', blocks_path(@user.id) %>
-    <% end %>
-    </p>
-
-    <div class = "col-md-2"></div>
-
-<p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
-
-<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
-<p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
-
-
+    
 <p>
 <% if params[:key] == '3' %>
     <%= link_to '戻る', follows_path(@user.id , key: 1) %>

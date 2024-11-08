@@ -1,8 +1,27 @@
-<h1>チャット</h1>
-<br>
-<%= image_tag "/images/kochat.png",size: '313x225' %>
-<br>
-<br>
-<br>
-<br>
-<%= image_tag "/images/guchat.png",size: '313x225' %>
+<div class = "row">
+    <div class = "col-1">
+        <%# <div class = "sidebar_fixed"> %>
+            <%= link_to image_tag("/images/home.png", size: '50x50'), root_path %>
+            <%= link_to image_tag("/images/search.png", size: '50x50'), user_search_path %>
+            <%= link_to image_tag("/images/chat.png", size: '50x50'), chat_top_path %>
+            <%= link_to image_tag("/images/profile.png", size: '50x50'), profile_path(current_user.id) %>
+        <%# </div> %>
+    </div>
+
+
+    <div class = "col">
+        <h1>チャット</h1>
+        <br>
+        <%= image_tag "/images/kochat.png",size: '313x225' %>
+        <br>
+        <br>
+        <br>
+        <br>
+        <%= image_tag "/images/guchat.png",size: '313x225' %>
+        <br>
+        <br>
+        <br>
+        <%= image_tag "/images/guchat.png",size: '313x225' %>
+
+    </div>
+</div>

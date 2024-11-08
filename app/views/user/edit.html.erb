@@ -44,5 +44,30 @@
     <%= form.label :hobby_5, '趣味5' %>
     <%= form.text_field :hobby_5 %>
 
+    <p>
+        <table>
+            <tr>
+                <td><%= form.label :color_bgcolor_blue, "あお" %></td>
+                <td><%= form.radio_button :color, :bgcolor_blue %></td>
+
+                <td><%= form.label :color_bgcolor_pink, "ぴんく" %></td>
+                <td><%= form.radio_button :color, :bgcolor_pink %></td>
+
+                <td><%= form.label :color_bgcolor_yellow, "きいろ" %></td>
+                <td><%= form.radio_button :color, :bgcolor_yellow %></td>
+
+                <td><%= form.label :color_bgcolor_green, "みどり" %></td>
+                <td><%= form.radio_button :color, :bgcolor_green %></td>
+
+                <td><%= form.label :color_bgcolor_purple, "むらさき" %></td>
+                <td><%= form.radio_button :color, :bgcolor_purple %></td>
+
+                <td><%= form.label :color_bgcolor_orange, "おれんじ" %></td>
+                <td><%= form.radio_button :color, :bgcolor_orange %></td>
+            </tr>
+        </table>
+    </p>
+
     <%= form.submit '更新' %>
+
 <% end %>

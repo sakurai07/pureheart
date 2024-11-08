@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group name:</strong>
+  <%= @group.group_name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @group.user_id %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @group.comment %>
+</p>
+
+<p>
+  <strong>Hobby 1:</strong>
+  <%= @group.hobby_1 %>
+</p>
+
+<p>
+  <strong>Hobby 2:</strong>
+  <%= @group.hobby_2 %>
+</p>
+
+<p>
+  <strong>Hobby 3:</strong>
+  <%= @group.hobby_3 %>
+</p>
+
+<p>
+  <strong>Hobby 4:</strong>
+  <%= @group.hobby_4 %>
+</p>
+
+<p>
+  <strong>Hobby 5:</strong>
+  <%= @group.hobby_5 %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

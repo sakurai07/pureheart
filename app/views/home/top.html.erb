@@ -15,6 +15,6 @@
     </div>
     <div class = "col-md-1"></div>
     <div class = "col-md-3">
-        <%= link_to image_tag("/images/topprofile.png", size: '250x250'), profile_path(current_user.id) %>
+        <%= link_to image_tag("/images/topprofile.png", size: '250x250'), profile_path(current_user.id, key_reset: true) %>
     </div>
 </div>

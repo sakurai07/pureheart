@@ -15,7 +15,7 @@
         <tr>
           <td><%= image_tag(url_for(icon_of_users_path(block.blocked_user_id)), size: '100x100') %></td>
           <td><%= block.blocked_user.name%></td>
-          <td><%= link_to 'プロフィール', profile_path(block.blocked_user_id , key: 5) %> </td>
+          <td><%= link_to 'プロフィール', profile_path(block.blocked_user_id) %> </td>
         </tr>
       <% end %>
 
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to '戻る', profile_path(current_user.id) %>
+<%= link_to '戻る', profile_path(current_user.id, key_reset: true) %>

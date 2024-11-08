@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_name: MyString
+  user_id: 1
+  comment: MyText
+  hobby_1: MyString
+  hobby_2: MyString
+  hobby_3: MyString
+  hobby_4: MyString
+  hobby_5: MyString
+
+two:
+  group_name: MyString
+  user_id: 1
+  comment: MyText
+  hobby_1: MyString
+  hobby_2: MyString
+  hobby_3: MyString
+  hobby_4: MyString
+  hobby_5: MyString

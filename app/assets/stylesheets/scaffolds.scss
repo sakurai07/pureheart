@@ -13,16 +13,15 @@ pre {
   padding: 10px;
   font-size: 11px; }
 
-.image:hover{
-  background-color:#fcdeec ;}
-
 a {
   color: #000; }
 
 a:visited {
   color: #666; }
 
-
+  .image:hover{
+    filter: brightness(90%);
+}
 
 th {
   padding-bottom: 5px; }

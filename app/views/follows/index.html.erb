@@ -21,12 +21,12 @@
           <% if params[:key] == '1' %>
             <td><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></td>
             <td><%= follow.followed_user.name%></td>
-            <td><%= link_to 'プロフィール', profile_path(follow.followed_user_id , key: 3) %> </td>
+            <td><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %> </td>
           <% end%>
           <% if params[:key] == '2' %>
             <td><%= image_tag(url_for(icon_of_users_path(follow.user_id)), size: '100x100') %></td>
             <td><%= follow.user.name %></td>
-            <td><%= link_to 'プロフィール', profile_path(follow.user_id , key: 4) %> </td>
+            <td><%= link_to 'プロフィール', profile_path(follow.user_id) %> </td>
           <% end %>
         <%# <td><%= link_to 'Edit', edit_follow_path(follow) </td> %>
         <%# <td><%= link_to 'Destroy', follow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,7 +38,7 @@
 </table>
 
 <br>
-<%= link_to '戻る', profile_path(current_user.id) %>
+<%= link_to '戻る', profile_path(current_user.id, key_reset: true) %>
 
 <%# <%= link_to 'New Follow', new_follow_path %>
 

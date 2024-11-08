@@ -11,10 +11,13 @@ class FollowsController < ApplicationController
     key = params[:key]
     if key == '1' 
       @follow = Follow.where("user_id=?", current_user.id)
+      session[:key] = '3'
     end
     if key == '2' 
       @follow = Follow.where("followed_user_id=?", current_user.id)
+      session[:key] = '4'
     end
+    
   end
 
   # GET /follows/1 or /follows/1.json
@@ -39,13 +42,14 @@ class FollowsController < ApplicationController
 
     # respond_to do |format|
       if @follow.save
-        redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully created."
-
+        # redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully created."
+        redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose]), notice: "follow was successfully created."
+        
         # format.html { redirect_to @follow, notice: "Follow was successfully created." }
         # format.json { render :show, status: :created, location: @follow }
       else
-        redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully failed."
-
+        # redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully failed."
+        redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose]), notice: "follow was successfully failed."
         # format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @follow.errors, status: :unprocessable_entity }
       end
@@ -75,7 +79,8 @@ class FollowsController < ApplicationController
     # end
     @follow = Follow.find_by(followed_user_id: params[:id] , user_id: current_user.id)
     @follow.destroy
-    redirect_to profile_path(@follow.followed_user_id)
+    # redirect_to profile_path(@follow.followed_user_id)
+    redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose])
   end
 
   private

@@ -4,6 +4,9 @@ class BlocksController < ApplicationController
   # GET /blocks or /blocks.json
   def index
     @block = Block.where("user_id=?", current_user.id)
+
+    # session["key_block"] ||= params[:key_block]
+    session[:key] = '5'
   end
 
   # GET /blocks/1 or /blocks/1.json
@@ -26,13 +29,14 @@ class BlocksController < ApplicationController
 
     # respond_to do |format|
       if @block.save
-        redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully created."
+        # redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully created."
+        redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose]), notice: "block was successfully created."
 
         # format.html { redirect_to @block, notice: "Block was successfully created." }
         # format.json { render :show, status: :created, location: @block }
       else
-        redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully failed."
-
+        # redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully failed."
+        redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose]), notice: "block was successfully failed."
         # format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @block.errors, status: :unprocessable_entity }
       end
@@ -62,7 +66,8 @@ class BlocksController < ApplicationController
     # end
     @block = Block.find_by(blocked_user_id: params[:id], user_id: current_user.id)
     @block.destroy
-    redirect_to profile_path(@block.blocked_user_id)
+    # redirect_to profile_path(@block.blocked_user_id)
+    redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose])
   end
 
   private

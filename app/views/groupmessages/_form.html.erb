@@ -1,0 +1,32 @@
+<%= form_with(model: groupmessage) do |form| %>
+  <% if groupmessage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(groupmessage.errors.count, "error") %> prohibited this groupmessage from being saved:</h2>
+
+      <ul>
+        <% groupmessage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.number_field :group_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -38,8 +38,12 @@ class UserController < ApplicationController
     @block = Block.find_by(blocked_user_id: @user.id, user_id: current_user.id)
     key = params[:key]
     # @user = User.find(params[:id])
-    session["key_windowclose_#{@user.id}"] ||= params[:key_windowclose]
-
+    # session["key_windowclose_#{@user.id}"] ||= params[:key_windowclose]
+    
+    if params[:key_reset].present?
+      session[:key] = nil
+    end
+    
   end
 
   def destroy

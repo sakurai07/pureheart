@@ -19,3 +19,21 @@
 .name {
     font-weight:bold
 }
+.bgcolor_blue {
+    background-color: #ddf1ff;
+}
+.bgcolor_pink {
+    background-color: #fff2f9;
+}
+.bgcolor_yellow {
+    background-color: #ffffdd;
+}
+.bgcolor_green {
+    background-color: #edffdd;
+}
+.bgcolor_purple {
+    background-color: #fbddff;
+}
+.bgcolor_orange {
+    background-color: #ffeddd;
+}

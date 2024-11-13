@@ -13,7 +13,27 @@
 
   <body class = <%= current_user.color unless current_user.nil? %>>
     <div class = "container">
-      <%= yield %>
+      <div class = "row">
+          <% if current_page?(root_path) or current_page?(login_path) or current_page?(signup_path) %>
+
+          <% else %>
+            <div class = "col-1 sidebar-color">
+              <%= link_to image_tag("/images/home.png", size: '50x50'), root_path, class: "image"%>
+              <br>
+              <br>
+              <%= link_to image_tag("/images/search.png", size: '50x50'), user_search_path, class:"image" %>
+              <br>
+              <br>
+              <%= link_to image_tag("/images/chat.png", size: '50x50'), chat_top_path, class: "image" %>
+              <br>
+              <br>
+              <%= link_to image_tag("/images/profile.png", size: '50x50'), profile_path(current_user.id), class: "image" %>
+            </div>
+          <% end %>
+          <div class = "col">
+            <%= yield %>
+          </div>
+      </div>
     </div>
     <%# <%= yield %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

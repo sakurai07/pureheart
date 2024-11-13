@@ -1,23 +1,13 @@
-<div class ="row">
-    <div class = "col-1">
-            <%= link_to image_tag("/images/home.png", size: '50x50'), root_path %>
-            <%= link_to image_tag("/images/search.png", size: '50x50'), user_search_path %>
-            <%= link_to image_tag("/images/chat.png", size: '50x50'), chat_top_path %>
-            <%= link_to image_tag("/images/profile.png", size: '50x50'), profile_path(current_user.id) %>
-    </div>
-
-    <div class = "col">
-        <p>友だち検索<p>
-        <p>ハッシュタグ検索</p>
-        <%= form_tag(user_result_path) do %>
-            <%= text_field_tag "search[hobby]" %><%= submit_tag "検索" %>
-        <% end %>
-        <br>
-        <p>学年・組で検索</p>
-        <%= form_tag(user_result_path) do %>
-            <%# select_tag "grade", options_from_collection_for_select(User.grades, "id", "name"), include_blank: true %>
-            <%= select_tag "search[grade]", options_for_select(User.grades), include_blank: true %>
-            <%= select_tag "search[klass]", options_for_select(User.klasses), include_blank: true %><%= submit_tag "検索" %>
-        <% end %>
-    </div>
-</div>
+<h1>友だち検索</h1>
+<br>
+<p>ハッシュタグ検索</p>
+<%= form_tag(user_result_path) do %>
+    <%= text_field_tag "search[hobby]" %><%= submit_tag "検索" %>
+<% end %>
+<br>
+<p>学年・組で検索</p>
+<%= form_tag(user_result_path) do %>
+    <%# select_tag "grade", options_from_collection_for_select(User.grades, "id", "name"), include_blank: true %>
+    <%= select_tag "search[grade]", options_for_select(User.grades), include_blank: true %>
+    <%= select_tag "search[klass]", options_for_select(User.klasses), include_blank: true %><%= submit_tag "検索" %>
+<% end %>

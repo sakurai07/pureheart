@@ -147,6 +147,8 @@
             <%= link_to '戻る', follows_path(@user.id , key: 2) %>
         <% elsif session[:key] == '5' %>
             <%= link_to '戻る', blocks_path(@user.id) %>
+        <% elsif params[:key] == '7' %>
+            <%= link_to '戻る', members_path(@user.id) %>
         <%end%>
         </p>
     <% end %>

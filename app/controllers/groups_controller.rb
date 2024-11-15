@@ -1,10 +1,33 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
+  def search
+    # if params[:search].present? && params[:search][:hobby].present?
+    #   @group = Group.where("id <> #{current_user.id} and (hobby_1 like '%#{params[:search][:hobby]}' or hobby_2 like '%#{params[:search][:hobby]}' or hobby_3 like '%#{params[:search][:hobby]}' or hobby_4 like '%#{params[:search][:hobby]}' or hobby_5 like '%#{params[:search][:hobby]}')").order(created_at: :desc)
+    # else
+    #   @group = []
+    #   flash.now[:danger] = "検索条件を入力してください"
+    # end
+    @groups = Group.all.order(created_at: :desc)
+    if params[:search].present? && params[:search][:hobbys].present?
+      # @group = Group.where("group.hobby_1 like '%#{params[:search_title]}' or hobby_2 like '%#{params[:search_title]}' or hobby_3 like '%#{params[:search_title]}' or hobby_4 like '%#{params[:search_title]}' or hobby_5 like '%#{params[:search_title]}'").order(created_at: :desc)
+      @group = Group.where("hobby_1 like '%#{params[:search][:hobbys]}'").order(created_at: :desc)
+    else
+      @group = []
+      flash.now[:danger] = "検索条件を入力してください"
+      # @group = Group.all.order(created_at: :desc)
+    end
+    render :index
+  end
 
+  # id <> #{current_user.id} and 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.all.order(created_at: :desc)
+    @group = []
+   
   end
+
+  # id <> #{current_user.id} and
 
   # GET /groups/1 or /groups/1.json
   def show

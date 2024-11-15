@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Members</h1>
+<%# <h1>Members</h1>
 
 <table>
   <thead>
@@ -13,17 +13,44 @@
 
   <tbody>
     <% @members.each do |member| %>
-      <tr>
+      <%# <tr>
         <td><%= member.user_id %></td>
-        <td><%= member.room_id %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# <td><%= member.room_id %></td>
+        <%# <td><%= link_to 'Show', member %></td> 
+        <%# <td><%= link_to 'Edit', edit_member_path(member) %></td> 
+        <%# <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }</td> %> 
+      <%# </tr> %>
+    <%# <% end %> 
+  <%# </tbody> %>
+<%# </table> %> 
+
+<%# <br> %>
+
+<%# <%= link_to 'New Member', new_member_path %>  
+
+<h1>個人チャット</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>アイコン</th>
+      <th>名前</th>
+      <%# <th>フォロワー</th> %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @follow.each do |follow| %>
+      <tr>
+            <td><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></td>
+            <td><%= link_to follow.followed_user.name ,profile_path(follow.followed_user_id, key: 7) %></td>
+            <td><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %> </td> <%#チャット画面ができたらチャットの文字とパスに変更する%>
       </tr>
     <% end %>
+
+
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Member', new_member_path %>
+<%= link_to '戻る', chat_top_path(@user_id) %>

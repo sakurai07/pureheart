@@ -1,3 +1,43 @@
+<% if @user.id == current_user.id %>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ハンバーガーメニュー</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <!-- ハンバーガーメニュー -->
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <!-- メニュー -->
+    <nav class="menu">
+        <ul>
+            <li><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></li>
+            <%# <li><a href="#">フォロー中</a></li> %>
+            <li><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></li>
+            <%# <li><a href="#">フォロワー</a></li> %>
+            <li>
+                <input type="checkbox" id="submenu-toggle" class="submenu-checkbox">
+                <label for="submenu-toggle" class="submenu-label">設定</label>
+                <ul class="submenu">
+                    <li><%= link_to 'プロフ編集', edit_user_path(current_user) %></li>
+                    <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+                    <li><%= link_to 'アカウント削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></li>
+                </ul>
+            </li>
+            <li><%= link_to 'ブロック中', blocks_path(@user.id) %></li>
+            <%# <li><a href="#">ブロックリスト</a></li> %>
+        </ul>
+    </nav>
+<% else %>
+
+<% end %>
+
 <div class = "row">
 
     <h1>プロフィール</h1>
@@ -17,13 +57,13 @@
 
         <div class = "col-md-4">
             <% if @user.id == current_user.id %>
-                <table>
+                <%# <table>
                     <tr>
                     <td><p><%= link_to 'フォロー中', follows_path(@user.id , key: 1) %></p></td>
-                    <td><p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p></td>
-                    <td><p><%= link_to 'ブロック中', blocks_path(@user.id) %></p></td>
-                    </tr>
-                </table>
+                    <%# <td><p><%= link_to 'フォロワー', follows_path(@user.id , key: 2) %></p></td> 
+                    <%# <td><p><%= link_to 'ブロック中', blocks_path(@user.id) %></p></td> 
+                    <%# </tr> %>
+                <%# </table> %> 
 
             <% else %>
                 <table>
@@ -81,10 +121,10 @@
 
     <% if @user.id == current_user.id %>
 
-        <p><%= link_to 'プロフィール編集', edit_user_path(current_user) %></p>
+        <%# <p><%= link_to 'プロフィール編集', edit_user_path(current_user) %>
 
-        <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
-        <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %></p>
+        <%# <p><%= link_to 'ログアウト', logout_path, method: :delete %>
+        <%# <p><%= link_to '削除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に削除しますか?'} %>
     <% else %>
     <p>
         <% if params[:key] == '3' %>

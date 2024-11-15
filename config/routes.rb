@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/user_search', to:'search#search'
   post '/user_result', to:'search#result'
 
+  get '/groups_search', to:'groups#index'
+  post '/groups_search', to:'groups#search'
+
   get 'chat/top'
   #get 'home/top'
   root to: 'home#top'

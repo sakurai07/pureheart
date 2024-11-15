@@ -73,24 +73,24 @@ class UserController < ApplicationController
   private
 
   def user_params_update
-    params.require(:user).permit(:name, :icon, :grade, :klass, :profile, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5)
+    params.require(:user).permit(:name, :icon, :grade, :klass, :profile, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5, :color)
   end
 
   def user_update_attributes
     if user_params_update[:icon] == nil
     {
-      name: user_params_update[:name], profile: user_params_update[:profile], grade: user_params_update[:grade], klass: user_params_update[:klass], hobby_1: user_params_update[:hobby_1], hobby_2: user_params_update[:hobby_2], hobby_3: user_params_update[:hobby_3], hobby_4: user_params_update[:hobby_4], hobby_5: user_params_update[:hobby_5]
+      name: user_params_update[:name], profile: user_params_update[:profile], grade: user_params_update[:grade], klass: user_params_update[:klass], hobby_1: user_params_update[:hobby_1], hobby_2: user_params_update[:hobby_2], hobby_3: user_params_update[:hobby_3], hobby_4: user_params_update[:hobby_4], hobby_5: user_params_update[:hobby_5], color: user_params_update[:color]
 
     }
     else
     {
-      name: user_params_update[:name], profile: user_params_update[:profile], grade: user_params_update[:grade], klass: user_params_update[:klass], hobby_1: user_params_update[:hobby_1], hobby_2: user_params_update[:hobby_2], hobby_3: user_params_update[:hobby_3], hobby_4: user_params_update[:hobby_4], hobby_5: user_params_update[:hobby_5], icon: user_params_update[:icon].read
+      name: user_params_update[:name], profile: user_params_update[:profile], grade: user_params_update[:grade], klass: user_params_update[:klass], hobby_1: user_params_update[:hobby_1], hobby_2: user_params_update[:hobby_2], hobby_3: user_params_update[:hobby_3], hobby_4: user_params_update[:hobby_4], hobby_5: user_params_update[:hobby_5], color: user_params_update[:color], icon: user_params_update[:icon].read
     }
     end
   end
 
     def user_params
-      params.require(:user).permit(:user_name, :password, :password_confirmartion, :name, :grade, :klass, :icon, :profile, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5)
+      params.require(:user).permit(:user_name, :password, :password_confirmartion, :name, :grade, :klass, :icon, :profile, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5, :color)
     end
     
 end

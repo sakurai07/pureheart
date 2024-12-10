@@ -2,6 +2,10 @@ class SearchController < ApplicationController
   def result
     if params[:search].present? && params[:search][:hobby].present? && params[:search][:grade].present? && params[:search][:klass].present?
       @user = User.where("id <> #{current_user.id} and (hobby_1 like '%#{params[:search][:hobby]}' or hobby_2 like '%#{params[:search][:hobby]}' or hobby_3 like '%#{params[:search][:hobby]}' or hobby_4 like '%#{params[:search][:hobby]}' or hobby_5 like '%#{params[:search][:hobby]}') and (grade like '%#{params[:search][:grade]}' and klass like '%#{params[:search][:klass]}') ").order(created_at: :desc)
+    elsif params[:search].present? && params[:search][:hobby].present? && params[:search][:grade].present?
+      @user = User.where("id <> #{current_user.id} and (hobby_1 like '%#{params[:search][:hobby]}' or hobby_2 like '%#{params[:search][:hobby]}' or hobby_3 like '%#{params[:search][:hobby]}' or hobby_4 like '%#{params[:search][:hobby]}' or hobby_5 like '%#{params[:search][:hobby]}') and (grade like '%#{params[:search][:grade]}') ").order(created_at: :desc)
+    elsif params[:search].present? && params[:search][:hobby].present? && params[:search][:klass].present?
+      @user = User.where("id <> #{current_user.id} and (hobby_1 like '%#{params[:search][:hobby]}' or hobby_2 like '%#{params[:search][:hobby]}' or hobby_3 like '%#{params[:search][:hobby]}' or hobby_4 like '%#{params[:search][:hobby]}' or hobby_5 like '%#{params[:search][:hobby]}') and (klass like '%#{params[:search][:klass]}') ").order(created_at: :desc)
     elsif params[:search].present? && params[:search][:grade].present? && params[:search][:klass].present?#学年と組一致
       @user = User.where("grade = #{params[:search][:grade]} and klass = #{params[:search][:klass]} and id <> #{current_user.id}").order(created_at: :desc)
     elsif params[:search].present? && params[:search][:grade].present?#学年が一致

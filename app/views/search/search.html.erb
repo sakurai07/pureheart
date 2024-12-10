@@ -1,5 +1,6 @@
 <h1>友だち検索</h1>
 <br>
+
 <%= form_tag(user_result_path) do %>
     <p>ハッシュタグ</p>
     <%= text_field_tag "search[hobby]" %>
@@ -8,5 +9,7 @@
     <p>学年・組</p>
     <%= select_tag "search[grade]", options_for_select(User.grades), include_blank: true %>
     <%= select_tag "search[klass]", options_for_select(User.klasses), include_blank: true %>
+    <br>
+    <br>
     <%= submit_tag "検索" %>
 <% end %>

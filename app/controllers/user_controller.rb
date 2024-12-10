@@ -7,7 +7,6 @@ class UserController < ApplicationController
 
   def new
     @user = User.new
-
   end
 
   def create
@@ -24,9 +23,6 @@ class UserController < ApplicationController
     else
       render 'new'
     end
-
-    
-
   end
 
   def show

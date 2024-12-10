@@ -2,21 +2,23 @@
 
 <h1>ブロック中</h1>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>アイコン</th>
-      <th>名前</th>
-    </tr>
-  </thead>
-
+<table>
   <tbody>
       <% @block.each do |block| %>
-        <tr>
-          <td><%= image_tag(url_for(icon_of_users_path(block.blocked_user_id)), size: '100x100') %></td>
-          <td><%= block.blocked_user.name%></td>
-          <td><%= link_to 'プロフィール', profile_path(block.blocked_user_id) %> </td>
-        </tr>
+        <div class = "row">
+          <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(block.blocked_user_id)), size: '100x100') %></p></div>
+          <div class = "col-md-10">
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p><%= block.blocked_user.name%></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(block.blocked_user_id) %> </p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+          </div>
+        </div>
       <% end %>
 
 

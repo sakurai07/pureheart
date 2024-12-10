@@ -6,9 +6,8 @@
       <tr>
         <td><%= image_tag(url_for(icon_of_users_path(user)), size: '100x100') %></td>
         <td><%= user.name %></td>
-        <td><%= link_to 'プロフィール', profile_path(user.id , key_windowclose: 6), target: :_blank, rel: "noopener noreferrer" %>
-
-</td>
+        <td><%= link_to 'プロフィール', profile_path(user.id , key_windowclose: 6), target: :_blank, rel: "noopener noreferrer" %></td>
+        
       </tr>
     <% end %>
     
@@ -19,4 +18,5 @@
 </table>
 <br>
 <p><%= flash[:danger] %></p>
-<%= link_to '検索画面', user_search_path %>
+
+<%= link_to '戻る', user_search_path %>

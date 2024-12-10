@@ -5,7 +5,7 @@
 <script>
     var message = <%= groupmessage.user.id %>;
     var message_user = document.getElementById('current_user');
-    var current_user = massage_user.getAttribute('data-user_id');
+    var current_user = message_user.getAttribute('data-user_id');
     if(message == current_user){
         $('p.' + <%= groupmessage.id %>).css('text-align', 'right');
     }else{

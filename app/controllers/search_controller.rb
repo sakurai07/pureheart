@@ -12,6 +12,9 @@ class SearchController < ApplicationController
       @user = []
       flash.now[:danger] = "検索条件を入力してください"
     end
+
+    @follow = Follow.all
+    
   end
 
   def search

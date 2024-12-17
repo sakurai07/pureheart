@@ -1,15 +1,43 @@
-<h1>友だち検索</h1>
-<br>
 
-<%= form_tag(user_result_path) do %>
-    <p>ハッシュタグ</p>
-    <%= text_field_tag "search[hobby]" %>
-    <br>
-    <br>
-    <p>学年・組</p>
-    <%= select_tag "search[grade]", options_for_select(User.grades), include_blank: true %>
-    <%= select_tag "search[klass]", options_for_select(User.klasses), include_blank: true %>
-    <br>
-    <br>
-    <%= submit_tag "検索" %>
-<% end %>
+<div class = "row">
+    <div class = "col-md-2"></div>
+
+    <div class = "col-md-8">
+        <h1>友だち検索</h1>
+        <br>
+    </div>
+</div>
+<div class = "row">　</div>  
+
+<div class = "row">
+        <%= form_tag(user_result_path) do %>
+            <div class = "row">
+                <div class = "col-md-2"></div>
+                <div class = "col-md-4">
+                    <h5 class = "form-label">ハッシュタグ</h5>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon">＃</span>
+                        <input type="text" class="form-control" id="search[hobby]" name="search[hobby]" placeholder="趣味を入力">
+                    </div>
+                </div>
+
+                <div class = "col-md-4">
+                    <h5 class = "form-label">学年・組</h5>
+                    <%= select_tag "search[grade]", options_for_select(User.grades), include_blank: true, class: "form-select" %>
+                    <div class = "row">　</div>  
+                    <%= select_tag "search[klass]", options_for_select(User.klasses), include_blank: true, class: "form-select" %>
+                </div>
+                <div class = "col-md-2"></div>
+            </div>            
+            <div class = "row">　</div>
+            <div class = "row">　</div>
+            <div class = "row">　</div>
+            <div class = "row text-center">
+                <div class = "mozi">
+                    <%= submit_tag "検索", class: "btn btn-secondary" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class = "row">　</div>
+</div>

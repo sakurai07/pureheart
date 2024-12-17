@@ -1,62 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<%# <h1>Members</h1>
+
+<div class = "row">
+  <div class = "col-md-2"><p>　</p></div>
+  <div class = "col-md-8">
+    <h1>個人チャット</h1>
+  </div>
+  <div class = "col-md-2"><p>　</p></div>
+  
+</div> 
+<div class = "row">　</div> 
+
 
 <table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Room</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @members.each do |member| %>
-      <%# <tr>
-        <td><%= member.user_id %></td>
-        <%# <td><%= member.room_id %></td>
-        <%# <td><%= link_to 'Show', member %></td> 
-        <%# <td><%= link_to 'Edit', edit_member_path(member) %></td> 
-        <%# <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }</td> %> 
-      <%# </tr> %>
-    <%# <% end %> 
-  <%# </tbody> %>
-<%# </table> %> 
-
-<%# <br> %>
-
-<%# <%= link_to 'New Member', new_member_path %>  
-
-<h1>個人チャット</h1>
-
-<%# <table>
   <tbody>
     <% @follow.each do |follow| %>
-      <%# <tr> %>
-            <%# <td><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100')</td> %>
-            <%# <td><%= link_to follow.followed_user.name ,profile_path(follow.followed_user_id, key: 7)</td> %>
-            <%# <td><%= link_to 'プロフィール', profile_path(follow.followed_user_id) </td> チャット画面ができたらチャットの文字とパスに変更する %>
-      <%# </tr> %>
-    <%# <% end %>
+      <div class = "row text-center">
+        <div class = "col-md-2"><p>　</p></div>
+        <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></p></div>
+        <div class = "col-md-8">
+          <div class = "row">
+            <div class = "col-md-2"><p>　</p></div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-2"><p><%= link_to follow.followed_user.name ,profile_path(follow.followed_user_id, key: 7) %></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %> </p></div> <%#チャット画面ができたらチャットの文字とパスに変更する %>
+          </div>
+          <div class = "row">
+            <div class = "col-md-2"><p>　</p></div>
+          </div>
+          <div class = "col-md-2"><p>　</p></div>
+        </div>
+      </div>
+    <% end %>
+  </tbody>
+</table>
 
-  <%# </tbody> %>
-<%# </table> %>
-<% @follow.each do |follow| %>
-  <div class = "row">
-    <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></p></div>
-    <div class = "col-md-10">
-      <div class = "row">
-        <div class = "col-md-2"><p>　</p></div>
-      </div>
-      <div class = "row">
-        <div class = "col-md-2"><p><%= link_to follow.followed_user.name ,profile_path(follow.followed_user_id, key: 7) %></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %> </p></div>
-      </div>
-      <div class = "row">
-        <div class = "col-md-2"><p>　</p></div>
-      </div>
-    </div>
+
+<div class = "row">　</div> 
+<div class = "row">　</div> 
+
+
+
+<div class = "row">
+  <div class = "col-md-2"><p>　</p></div>
+  <div class = "col-md-8">
+    <%= link_to '戻る', chat_top_path(@user_id) %>
   </div>
-<% end %>
-<br>
-<%= link_to '戻る', chat_top_path(@user_id) %>
+  <div class = "col-md-2"><p>　</p></div>
+  
+</div>
+

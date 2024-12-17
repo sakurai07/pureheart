@@ -34,8 +34,15 @@
 <%# <%= link_to 'New Follow', new_follow_path %>
 
 
-  
 
+
+
+
+
+
+<div class = "row">
+  <div class = "col-md-2"><p>　</p></div>
+  <div class = "col-md-8">
     <p id="notice"><%= notice %></p>
     <% if params[:key] == '1' %>
       <h1>フォロー中</h1>
@@ -43,53 +50,68 @@
     <% if params[:key] == '2' %>
       <h1>フォロワー</h1>
     <% end %>
+  </div>
+  <div class = "col-md-2"><p>　</p></div>
+  
+</div> 
+<div class = "row">　</div> 
+
+
+<table>
+  <tbody>
+    <% @follow.each do |follow| %>
+      <% if params[:key] == '1' %>
+        <div class = "row text-center">
+          <div class = "col-md-2"><p>　</p></div>
+          <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></p></div>
+          <div class = "col-md-8">
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p><%= follow.followed_user.name%></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %> </p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "col-md-2"><p>　</p></div>
+          </div>
+        </div>
+      <% end%>
+      <% if params[:key] == '2' %>
+        <div class = "row">
+          <div class = "col-md-2"><p>　</p></div>
+          <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(follow.user_id)), size: '100x100') %></p></div>
+          <div class = "col-md-8">
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p><%= follow.user.name %></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(follow.user_id) %> </p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "col-md-2"><p>　</p></div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class = "row">　</div> 
+<div class = "row">　</div> 
 
 
 
-
-        <% @follow.each do |follow| %>
-              <% if params[:key] == '1' %>
-                <div class = "row">
-                  <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></p></div>
-                  <div class = "col-md-10">
-                    <div class = "row">
-                      <div class = "col-md-2"><p>　</p></div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-2"><p><%= follow.followed_user.name%></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %> </p></div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-2"><p>　</p></div>
-                    </div>
-                    
-                  </div>
-                </div>
-              <% end%>
-              <% if params[:key] == '2' %>
-              <div class = "row">
-                  <div class = "col-md-2"><div class = "col-md-2"><%= image_tag(url_for(icon_of_users_path(follow.user_id)), size: '100x100') %></div></div>
-                  <div class = "col-md-10">
-                    <div class = "row">
-                      <div class = "col-md-2"><p>　</p></div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-2"><%= follow.user.name %></div><div class = "col-md-4"><%= link_to 'プロフィール', profile_path(follow.user_id) %> </div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-2"><p>　</p></div>
-                    </div>
-                    
-                  </div>
-                </div>
-                
-                
-                
-              <% end %>
-            <%# <td><%= link_to 'Edit', edit_follow_path(follow) </td> %>
-
-        <% end %>
-
-    <br>
+<div class = "row">
+  <div class = "col-md-2"><p>　</p></div>
+  <div class = "col-md-8">
     <%= link_to '戻る', profile_path(current_user.id, key_reset: true) %>
+  </div>
+  <div class = "col-md-2"><p>　</p></div>
+  
+</div>
 
-    <%# <%= link_to 'New Follow', new_follow_path %>

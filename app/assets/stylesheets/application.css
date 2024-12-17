@@ -20,6 +20,9 @@
 .name {
     font-weight:bold
 }
+.bgcolor_white{
+    background-color: #ffffff;
+}
 .bgcolor_blue {
     background-color: #ddf1ff;
 }
@@ -33,7 +36,7 @@
     background-color: #edffdd;
 }
 .bgcolor_purple {
-    background-color: #fbddff;
+    background-color: #fdf1ff;
 }
 .bgcolor_orange {
     background-color: #ffeddd;

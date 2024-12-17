@@ -1,0 +1,20 @@
+<p class = "<%= groupmessage.id %>"><%= groupmessage.user.name %></p>
+<p class = "<%= groupmessage.id %>"><%= groupmessage.message %></p>
+<p class = "<%= groupmessage.id %>"><%= groupmessage.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+
+<script>
+    var message = <%= groupmessage.user.id %>;
+    var message_user = document.getElementById('current_user');
+    var current_user = message_user.getAttribute('data-user_id');
+    if(message == current_user){
+        $('p.' + <%= groupmessage.id %>).css('text-align', 'right');
+    }else{
+        $('p.' + <%= groupmessage.id %>).css('text-align', 'left');
+    }
+</script>
+
+<script>
+    var element = document.getElementById('groupmessage_input');
+    element.scrollIntoView();
+    element.focus();
+</script>

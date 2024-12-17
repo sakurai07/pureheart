@@ -3,6 +3,7 @@
 <h1>グループチャット</h1>
 
 
+
 <%= link_to 'グループ作成', new_group_path %>
 
 <br>
@@ -16,6 +17,7 @@
         <td><%= group.group_name %></td>
         <td><%= link_to '詳細', group %></td>
         <td>参加</td>
+        <td><%= link_to 'はじめる', groupmessages_path(group_id: group.id) %></td>
         <%# <td><%= link_to 'Edit', edit_group_path(group) %></td> 
         <%# <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>

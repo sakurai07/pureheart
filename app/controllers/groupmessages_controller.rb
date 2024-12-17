@@ -3,7 +3,8 @@ class GroupmessagesController < ApplicationController
 
   # GET /groupmessages or /groupmessages.json
   def index
-    @groupmessages = Groupmessage.all
+    @group = Group.find(params[:group_id])
+    @groupmessages = @group.groupmessages
   end
 
   # GET /groupmessages/1 or /groupmessages/1.json

@@ -169,3 +169,14 @@ body {
     margin-bottom: 5px;
     padding-left: 10px; /* 他の項目と揃える */
 }
+
+/* チャットアイコンに未読マーク（仮） */
+.example {
+    position: relative;
+}
+
+.example span {
+    position: absolute;
+    font-size: large;
+    color: red;
+}

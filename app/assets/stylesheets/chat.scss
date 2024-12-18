@@ -1,3 +1,19 @@
 // Place all the styles related to the chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* チャットアイコンに未読マーク（仮） */
+.example {
+    position: relative;
+}
+
+.example1 span {
+    position: absolute;
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    background-color: red;
+    text-align: center;
+}

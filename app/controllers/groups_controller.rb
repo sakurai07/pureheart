@@ -8,15 +8,24 @@ class GroupsController < ApplicationController
     #   flash.now[:danger] = "検索条件を入力してください"
     # end
     @groups = Group.all.order(created_at: :desc)
+
+    @message = ""
+
     if params[:search].present? && params[:search][:hobbys].present?
       # @group = Group.where("group.hobby_1 like '%#{params[:search_title]}' or hobby_2 like '%#{params[:search_title]}' or hobby_3 like '%#{params[:search_title]}' or hobby_4 like '%#{params[:search_title]}' or hobby_5 like '%#{params[:search_title]}'").order(created_at: :desc)
       @group = Group.where("hobby_1 like '%#{params[:search][:hobbys]}'").order(created_at: :desc)
+      if @group.size == 0
+        @message = "検索結果がありませんでした"
+      end
     else
       @group = []
-      flash.now[:danger] = "検索条件を入力してください"
+      # flash.now[:danger] = "検索条件を入力してください"
+      @message = "検索条件を入力してください"
       # @group = Group.all.order(created_at: :desc)
     end
     render :index
+
+    
   end
 
   # id <> #{current_user.id} and 
@@ -24,7 +33,6 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all.order(created_at: :desc)
     @group = []
-   
   end
 
   # id <> #{current_user.id} and

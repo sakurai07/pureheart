@@ -32,3 +32,5 @@ $("#groupmessage_input").keypress(function(e) {
     e.preventDefault();
   }
 });
+
+$(".showAnswer").on("click",function(){$(".answer").show();});

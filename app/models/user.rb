@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :groups, dependent: :destroy
   has_many :groupmembers, dependent: :destroy
   has_many :groupmessages,dependent: :destroy
+  has_many :messages,dependent: :destroy
+  has_many :members,dependent: :destroy
 
   enum grade: {"1年": 1,"2年": 2,"3年": 3}
   enum klass: {"1組": 1,"2組": 2,"3組": 3,"4組": 4}

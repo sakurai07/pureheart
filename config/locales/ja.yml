@@ -6,7 +6,7 @@ ja:
       groupmember: グループメンバー
       groupmessage: グループメッセージ
       room: 個人チャット
-      massage: 個人メッセージ
+      message: 個人メッセージ
       member: 個人メンバー
       follow: フォロー
       block: ブロック
@@ -63,7 +63,7 @@ ja:
         crated_at: 登録日時
         updated_at: 更新日時
 
-      massage:
+      message:
         id: ＩＤ
         user_id: 送信者
         room_id: 部屋

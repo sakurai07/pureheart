@@ -1,0 +1,20 @@
+<p class = "<%= message.id %>"><%= message.user.name %></p>
+<p class = "<%= message.id %>"><%= message.message %></p>
+<p class = "<%= message.id %>"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+
+<script>
+    var message = <%= message.user.id %>;
+    var message_user = document.getElementById('current_user');
+    var current_user = message_user.getAttribute('data-user_id');
+    if(message == current_user){
+        $('p.' + <%= message.id %>).css('text-align', 'right');
+    }else{
+        $('p.' + <%= message.id %>).css('text-align', 'left');
+    }
+</script>
+
+<script>
+    var element = document.getElementById('message_input');
+    element.scrollIntoView();
+    element.focus();
+</script>

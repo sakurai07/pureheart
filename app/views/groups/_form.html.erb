@@ -11,48 +11,63 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :'グループ名' %>
-    <%= form.text_field :group_name %>
-  </div>
+  <div class = "row">
+    <div class = "col-md-2"></div>
 
-  <div class="field">
-    <%= form.label :'作成者ＩＤ' %>
-    <%# <%= form.text_field :user_id %> 
-    <%= form.select :user_id, User.all.map { |user| [user.name, user.id]} %>
-  </div>
+    <div class = "col-md-8">
+      <div class="field">
+        <div class = "contaner">
+          <%= form.label :'グループ名' %>
+          <%= form.label :グループ名, '　必須', class: "form-label ab"%>
+        </div>
+          <%= form.text_field :group_name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :'コメント' %>
-    <%= form.text_area :comment %>
-  </div>
+      <div class="field">
+        <%= form.label :'作成者ＩＤ' %>
+        <%# <%= form.text_field :user_id %> 
+        <%= form.select :user_id, User.all.map { |user| [user.name, user.id]} %>
+      </div>
 
-  <div class="field">
-    <%= form.label :'趣味１' %>
-    <%= form.text_field :hobby_1 %>
-  </div>
+      <div class="field">
+        <div class = "contaner">
+          <%= form.label :'グループ紹介' %>
+          <%= form.label :グループ紹介, '　必須', class: "form-label ab"%>
+        </div>
+        <%= form.text_area :comment, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :'趣味２' %>
-    <%= form.text_field :hobby_2 %>
-  </div>
+      <div class="field">
+        <div class = "contaner">
+          <%= form.label :'趣味１' %>
+          <%= form.label :趣味１, '　必須', class: "form-label ab"%>
+        </div>
+        <%= form.text_field :hobby_1, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :'趣味３' %>
-    <%= form.text_field :hobby_3 %>
-  </div>
+      <div class="field">
+        <%= form.label :'趣味２' %>
+        <%= form.text_field :hobby_2, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :'趣味４' %>
-    <%= form.text_field :hobby_4 %>
-  </div>
+      <div class="field">
+        <%= form.label :'趣味３' %>
+        <%= form.text_field :hobby_3, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :'趣味５' %>
-    <%= form.text_field :hobby_5 %>
-  </div>
+      <div class="field">
+        <%= form.label :'趣味４' %>
+        <%= form.text_field :hobby_4, class: "form-control" %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="field">
+        <%= form.label :'趣味５' %>
+        <%= form.text_field :hobby_5, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit '登録', class: "btn btn-secondary" %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -22,7 +22,7 @@
                 
                 <div class = "contaner">
                     <%= form.label :user_name, 'ユーザーネーム', class: "form-label" %>
-                    <%= form.label :password, '　必須', class: "form-label ab"%>
+                    <%= form.label :user_name, '　必須', class: "form-label ab"%>
                 </div>
 
                 <%= form.text_field :user_name, class: "form-control" %>
@@ -47,7 +47,7 @@
 
                 <div class ="contaner">
                     <%= form.label :name, 'なまえ', class: "form-label" %>
-                    <%= form.label :password, '　必須', class: "form-label ab"%>
+                    <%= form.label :name, '　必須', class: "form-label ab"%>
                 </div>
                 <%= form.text_field :name, class: "form-control" %>
 
@@ -57,7 +57,7 @@
                 <%# <div class="field"> %>
                 <div class = "contaner">
                     <%= form.label :学年, class: "form-label" %>
-                    <%= form.label :password, '　必須', class: "form-label ab"%>
+                    <%= form.label :学年, '　必須', class: "form-label ab"%>
                 </div>
                 <%= form.select :grade, [""] + User.grades.keys.to_a, {}, class: "form-select" %>
                 <%# </div> %>
@@ -68,7 +68,7 @@
                 <%# <div class="field"> %>
                 <div class = "contaner">
                     <%= form.label :組, class: "form-label" %>
-                    <%= form.label :password, '　必須', class: "form-label ab"%>    
+                    <%= form.label :組, '　必須', class: "form-label ab"%>    
                 </div>
                 <%= form.select :klass, [""] + User.klasses.keys.to_a, {}, class: "form-select" %>
                 <%# </div> %>
@@ -79,7 +79,7 @@
                 
                 <div class = "contaner">
                     <%= form.label :hobby_1, '趣味1', class: "form-label" %>
-                    <%= form.label :password, '　必須', class: "form-label ab"%>
+                    <%= form.label :hobby_1, '　必須', class: "form-label ab"%>
                 </div>
                 <%= form.text_field :hobby_1, class: "form-control" %>
 
@@ -109,7 +109,7 @@
 
         <div class = "contaner">
             <%= form.label :profile, '自己紹介', class: "form-label" %>
-            <%= form.label :password, '　必須', class: "form-label ab"%>
+            <%= form.label :profile, '　必須', class: "form-label ab"%>
         </div>
         <%= form.text_area :profile, class: 'form-control', width: 100, row: 5 %>
 

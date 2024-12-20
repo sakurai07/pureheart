@@ -3,7 +3,10 @@ class MessagesController < ApplicationController
 
   # GET /messages or /messages.json
   def index
-    @messages = Message.all
+    @room = Room.find(params[:room_id])
+    @messages = @room.messages
+    @followed_user = Member.find_by("room_id = ? and user_id <> ?", params[:room_id], current_user.id).user
+    # @messages = Message.all
   end
 
   # GET /messages/1 or /messages/1.json

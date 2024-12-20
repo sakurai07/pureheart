@@ -1,44 +1,98 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>グループ名:</strong>
-  <%= @group.group_name %>
-</p>
+<div class = "row" >
+  <div class = "col-md-2">　</div>
+  <div class = "col-md-8" >
+    <div class = "row" >
+      <div class = "col-md-6">
+        <h3>グループ名　<%= @group.group_name %></h3>
+      </div>
+      <div class = "col-md-6">
+        <br>
+        <h6>作成者　<%= @user.name %></h6>
+      </div>
+      </div>
+  </div>
+  <div class = "col-md-2">　</div>
+</div>
 
-<p>
-  <strong>作成者ＩＤ:</strong>
-  <%= @group.user_id %>
-</p>
+<div class = "row">　</div>
+<div class = "row">　</div>
 
-<p>
-  <strong>コメント:</strong>
-  <%= @group.comment %>
-</p>
+<div class = "row" >
+  <div class = "col-md-2">　</div>
+  <div class = "col-md-8">
+    <h5>グループ紹介</h5>
+    <h6><%= @group.comment %></h6>
+  </div>
+  <div class = "col-md-2">　</div>
+</div>
 
-<p>
-  <strong>趣味1:</strong>
-  <%= @group.hobby_1 %>
-</p>
+<div class = "row">　</div>
+<div class = "row">　</div>
 
-<p>
-  <strong>趣味2:</strong>
-  <%= @group.hobby_2 %>
-</p>
+<div class = "row">
+  <div class = "col-md-2">　</div>
+  <div class = "col-md-8">
+    <h5>趣味</h5>
+  </div>
+  <div class = "col-md-2">　</div>
+</div>
+<div class = "hobby">
+  <div class = "row">
+    <div class = "col-md-2">　</div>
+    <div class = "col-md-8">
+      <div class = "row">
+        <p>
+        <div class = "col-md-2">
+          <% if @group.hobby_1.present? %>
+            ＃<%= @group.hobby_1 %>
+          <% end %>
+        </div>
+        <div class = "col-md-2">
+          <% if @group.hobby_2.present? %>
+            ＃<%= @group.hobby_2 %>
+          <% end %>
+        </div>
+        <div class = "col-md-2">
+          <% if @group.hobby_3.present? %>
+            ＃<%= @group.hobby_3 %>
+          <% end %>
+        </div>
+        <div class = "col-md-2">
+          <% if @group.hobby_4.present? %>
+            ＃<%= @group.hobby_4 %>
+          <% end %>
+        </div>
+        <div class = "col-md-2">
+          <% if @group.hobby_5.present? %>
+            ＃<%= @group.hobby_5 %>
+          <% end %>
+        </div>
+        <div class = "col-md-2">　</div>
+        </p>
+      </div>
+      <div class = "col-md-2">　</div>
+    </div>
+  </div>
+</div>
+<br>
 
-<p>
-  <strong>趣味3:</strong>
-  <%= @group.hobby_3 %>
-</p>
+<div class = "row">
+  <div class = "col-md-2">　</div>
+  <div class = "col-md-8">
+    <% if @group.user_id == current_user.id%>
+      <p><%= link_to 'グループ情報変更', edit_group_path(@group) %></p>
+    <% end %>
+  </div>
+  <div class = "col-md-2">　</div>
+</div>
 
-<p>
-  <strong>趣味4:</strong>
-  <%= @group.hobby_4 %>
-</p>
+<div class = "row">
+  <div class = "col-md-2">　</div>
+  <div class = "col-md-8">
+    <%= link_to '戻る', groups_path %>
+  </div>
+  <div class = "col-md-2">　</div>
+</div>
 
-<p>
-  <strong>趣味5:</strong>
-  <%= @group.hobby_5 %>
-</p>
-
-<%# <%= link_to 'Edit', edit_group_path(@group) %>
-<%= link_to '戻る', groups_path %>

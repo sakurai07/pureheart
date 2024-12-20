@@ -25,7 +25,10 @@
               <%= link_to image_tag("/images/search.png", size: '50x50'), user_search_path, class:"image" %>
               <br>
               <br>
-              <%= link_to image_tag("/images/chat.png", size: '50x50'), chat_top_path, class: "image" %>
+              <div class ="example">
+                <%= link_to image_tag("/images/chat.png", size: '50x50'), chat_top_path, class: "image" %>
+                <span>●</span>
+              </div>
               <br>
               <br>
               <%= link_to image_tag("/images/profile.png", size: '50x50'), profile_path(current_user.id), class: "image" %>

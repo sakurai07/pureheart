@@ -21,17 +21,32 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
+    room = []
+    ActiveRecord::Base.transaction do
+      room = Room.new
+      room.save
 
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
+      member1 = Member.new(:room_id => room.id, :user_id => current_user.id)
+      member1.save
+
+      member2 = Member.new(:room_id => room.id, :user_id => params[:member][:followed_user_id])
+      member2.save
     end
+
+    redirect_to messages_path(room_id: room.id)
+
+    # @room = Room.new(room_params)
+
+    # respond_to do |format|
+    #   if @room.save
+    #     format.html { redirect_to @room, notice: "Room was successfully created." }
+    #     format.json { render :show, status: :created, location: @room }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @room.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
   end
 
   # PATCH/PUT /rooms/1 or /rooms/1.json

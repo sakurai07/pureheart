@@ -1,9 +1,9 @@
 import consumer from "./consumer"
 
-const appGroup = consumer.subscriptions.create("GroupChannel", {
+const appRoom = consumer.subscriptions.create("RoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
-    return this.perform("group_select", {group_id: $('#messages').data('group_id')});
+    return this.perform("room_select", {room_id: $('#messages').data('room_id')});
   },
 
   disconnected() {
@@ -15,20 +15,20 @@ const appGroup = consumer.subscriptions.create("GroupChannel", {
     return $('#messages').append(data['message']);
   },
 
-  speak: function(message, user_id, group_id) {
-    return this.perform('speak', {message: message, user_id: user_id, group_id: group_id});
+  speak: function(message, user_id, room_id) {
+    return this.perform("speak", {message: message, user_id: user_id, room_id: room_id});
   }
 });
 
-$("#groupmessage_input").keypress(function(e) {
+$("#message_input").keypress(function(e) {
   if (e.keyCode === 13) {
-    appGroup.speak(e.target.value, $("#current_user").data("user_id"),$("#messages").data("group_id"));
+    appRoom.speak(e.target.value, $("#current_user").data("user_id"), $("#messages").data("room_id"));
     //↓あとで消す
     // alert(e.target.value);
     // alert($("#current_user").data("user_id"));
-    // alert($("#messages").data("group_id"));
+    // alert($("#messages").data("room_id"));
     //↑あとで消す
     e.target.value = "";
     e.preventDefault();
   }
-});
+})

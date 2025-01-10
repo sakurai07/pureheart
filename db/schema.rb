@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2025_01_08_015550) do
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "read"
+    t.boolean "read", default: false
   end
 
   create_table "groups", force: :cascade do |t|
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2025_01_08_015550) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "read"
+    t.boolean "read", default: false
   end
 
   create_table "pictures", force: :cascade do |t|

@@ -3,7 +3,4 @@ class Group < ApplicationRecord
   has_many :groupmessages , dependent: :destroy
   belongs_to :user
 
-
-
-  
 end

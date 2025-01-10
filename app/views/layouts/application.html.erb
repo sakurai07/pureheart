@@ -27,7 +27,7 @@
               <br>
               <div class ="example">
                 <%= link_to image_tag("/images/chat.png", size: '50x50'), chat_top_path, class: "image" %>
-                <span>●</span>
+                <span><%= non_read_groupmessage + non_read_message %></span>
               </div>
               <br>
               <br>

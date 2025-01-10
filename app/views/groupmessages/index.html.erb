@@ -4,14 +4,20 @@
 <div id = "current_user" data-user_id = "<%= current_user.id %>">
 </div>
 
-<div id = "messages" data-group_id = "<%= @group.id %>">
-  <%= render @groupmessages %>
+<div style = "overflow: auto;height: 600px;">
+
+  <div id = "messages" data-group_id = "<%= @group.id %>">
+    <%= render @groupmessages %>
+  </div>
+
 </div>
 
 <form>
   <label style = "color: black;" id = "target">新しいメッセージを作成</label><br>
   <input type = "text" id = "groupmessage_input" data-behavior = "group_speaker" class = "form-control">
 </form>
+
+
 
 <script>
   var element = document.getElementById('groupmessage_input');

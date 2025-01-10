@@ -44,11 +44,14 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
+    @user = User.all.order( created_at: :desc )
     @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
+    @user = User.all.order( created_at: :desc )
+    @groups = Group.all.order(created_at: :desc)
   end
 
   # POST /groups or /groups.json

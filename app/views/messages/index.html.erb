@@ -5,8 +5,12 @@
 <div id = "current_user" data-user_id = "<%= current_user.id %>">
 </div>
 
-<div id = "messages" data-room_id = "<%= @room.id %>">
-  <%= render @messages %>
+<div style = "overflow: auto;height: 600px">
+
+  <div id = "messages" data-room_id = "<%= @room.id %>">
+    <%= render @messages %>
+  </div>
+
 </div>
 
 <form>

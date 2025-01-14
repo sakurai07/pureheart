@@ -1,37 +1,48 @@
+<%# <%= form_with(model: group) do |form| %>
+  <%# <% if group.errors.any? %>
+    <%# <div id="error_explanation"> %>
+      <%# <h2><%= pluralize(group.errors.count, "error") %> 
+
+      <%# <ul> %>
+        <%# <% group.errors.each do |error| %>
+          <%# <li><%= error.full_message %></li>
+        <%# <% end %>
+      <%# </ul> %>
+    <%# </div> %>
+  <%# <% end %>
 <%= form_with(model: group) do |form| %>
-  <% if group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-        <% group.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class = "row">
     <div class = "col-md-2"></div>
+
+      <div class = "mozi">
+                    <% if @group.errors.any? %>
+                    <%# <strong><%= @user.errors.count個のエラーがあります</strong> %>
+                    <ul>
+                        <% @group.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                    <% end %>
+      </div>
 
     <div class = "col-md-8">
       <div class="field">
         <div class = "contaner">
-          <%= form.label :'グループ名' %>
-          <%= form.label :グループ名, '　必須', class: "form-label ab"%>
+          <%= form.label :group_name, 'グループ名', class: "form-label" %>
+          <%= form.label :group_name, '　必須', class: "form-label ab"%>
         </div>
           <%= form.text_field :group_name, class: "form-control" %>
       </div>
 
       <div class="field">
-        <%= form.label :'作成者ＩＤ' %>
+        <%= form.label :user_id, '作成者ＩＤ', class: "form-label" %>
         <%# <%= form.text_field :user_id %> 
         <%= form.select :user_id, User.all.map { |user| [user.name, user.id]} %>
       </div>
 
       <div class="field">
         <div class = "contaner">
-          <%= form.label :'グループ紹介' %>
+          <%= form.label :comment, 'グループ紹介', class: "form-label" %>
           <%= form.label :グループ紹介, '　必須', class: "form-label ab"%>
         </div>
         <%= form.text_area :comment, class: "form-control" %>
@@ -39,7 +50,7 @@
 
       <div class="field">
         <div class = "contaner">
-          <%= form.label :'趣味１' %>
+          <%= form.label :hobby_1, '趣味１', class: "form-label" %>
           <%= form.label :趣味１, '　必須', class: "form-label ab"%>
         </div>
         <%= form.text_field :hobby_1, class: "form-control" %>
@@ -71,3 +82,4 @@
     </div>
   </div>
 <% end %>
+

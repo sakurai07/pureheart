@@ -37,7 +37,9 @@
       <div class="field">
         <%= form.label :user_id, '作成者ＩＤ', class: "form-label" %>
         <%# <%= form.text_field :user_id %> 
-        <%= form.select :user_id, User.all.map { |user| [user.name, user.id]} %>
+        <%# <%= form.select :user_id, User.all.map { |user| [user.name, user.id]} %>
+        <h6><%= current_user.name %></h6>
+        <%= form.hidden_field :user_id, value: current_user.id %>
       </div>
 
       <div class="field">

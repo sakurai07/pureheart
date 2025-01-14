@@ -8,6 +8,7 @@ class GroupmembersController < ApplicationController
 
   # GET /groupmembers/1 or /groupmembers/1.json
   def show
+    @groupmembers = Groupmember.all
   end
 
   # GET /groupmembers/new

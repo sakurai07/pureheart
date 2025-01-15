@@ -1,10 +1,20 @@
 module MessagesHelper
   def non_read_message
-    Message.where(read: false).where.not(user_id: current_user.id).count
+    member = Member.where("user_id=?", current_user.id)
+    non_read_messagecount = 0
+    member.each do |m|
+      non_read_messagecount = non_read_messagecount + Message.where(room_id: m.room_id, read: false).where.not(user_id: current_user.id).count  
+    end
+    non_read_messagecount
   end
 
   def non_read_message_by_user(user_id)
-    Message.where(user_id: user_id, read: false).count
+    member = Member.where("user_id=?", current_user.id)
+    non_read_messagecount = 0
+    member.each do |m|
+      non_read_messagecount = non_read_messagecount + Message.where(room_id: m.room_id, user_id: user_id, read: false).count
+    end
+    non_read_messagecount
   end
   
 end

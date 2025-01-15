@@ -7,7 +7,7 @@
     <% @follow.each do |follow| %>
       <tr>
             <td><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></td>
-            <td><%= link_to follow.followed_user.name ,profile_path(follow.followed_user_id, key: 7) %></td>
+            <td><%= follow.followed_user.name %></td>
             <td><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %></td>
             <td>
               <% member = open_member_record(follow.followed_user_id) %>
@@ -27,6 +27,5 @@
             <td>未読数:<%= non_read_message_by_user(follow.followed_user_id) %></td>
       </tr>
     <% end %>
-
   </tbody>
 </table>

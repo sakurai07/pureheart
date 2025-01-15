@@ -26,7 +26,7 @@ class GroupmembersController < ApplicationController
 
     respond_to do |format|
       if @groupmember.save
-        format.html { redirect_to @groupmember, notice: "Groupmember was successfully created." }
+        format.html { redirect_to groupmessages_path(group_id: @groupmember.group_id), notice: "Groupmember was successfully created." }
         format.json { render :show, status: :created, location: @groupmember }
       else
         format.html { render :new, status: :unprocessable_entity }

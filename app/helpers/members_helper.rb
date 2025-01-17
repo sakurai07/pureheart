@@ -9,4 +9,14 @@ module MembersHelper
     end
     return nil
   end
+
+  def check_follower(followed_user_id)
+    follow = Follow.find_by(user_id: followed_user_id , followed_user_id: current_user.id)
+    if follow.nil?
+      return false
+    else
+      return true
+    end
+  end
+
 end

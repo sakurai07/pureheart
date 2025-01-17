@@ -1,15 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class = "row">
+  <div class = "col-md-2"><p>　</p></div>
+  <div class = "col-md-8">
+    <p id="notice"><%= notice %></p>
+    <h1>個人チャット</h1>
+  </div>
+  <div class = "col-md-2"><p>　</p></div>
+  
+</div> 
+<div class = "row">　</div> 
+<div class = "row">　</div> 
 
-<h1>個人チャット</h1>
-
+<div class = "row">
+  <div class = "col-md-1"><p>　</p></div>
+  <div class = "col-md-10">
+    <h4>フォロー中</h4>
+  </div>
+  <div class = "col-md-1"><p>　</p></div>
+</div> 
 <table>
   <tbody>
     <% @follow.each do |follow| %>
-      <tr>
-            <td><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></td>
-            <td><%= follow.followed_user.name %></td>
-            <td><%= link_to 'プロフィール', profile_path(follow.followed_user_id) %></td>
-            <td>
+      <div class = "row text-center">
+        <div class = "col-md-1"><p>　</p></div>
+        <div class = "col-md-1"><p><%= image_tag(url_for(icon_of_users_path(follow.followed_user_id)), size: '100x100') %></p></div>
+        <div class = "col-md-10">
+          <div class = "row">
+            <div class = "col-md-2"><p></p><p><%= follow.followed_user.name %></p></div>
+            <div class = "col-md-2"><p></p><p><%= link_to 'プロフィール', profile_path(follow.followed_user_id, key: 7) %></p></div>
+            <div class = "col-md-3">
+              <p></p><p>
               <% member = open_member_record(follow.followed_user_id) %>
               <% if member.nil? %>
                 <%= form_for Room.new, url: rooms_path do |room| %>
@@ -23,9 +42,74 @@
                 <%= button_tag "チャットを続ける", id: "chat_submit", class: "form-control" %>
                 <% end %>
               <% end %>
-            </td>
-            <td>未読数:<%= non_read_message_by_user(follow.followed_user_id) %></td>
-      </tr>
+              </p>
+            </div>
+            <div class = "col-md-3"><p></p><p>未読数:<%= non_read_message_by_user(follow.followed_user_id) %></p></div>
+          </div>
+        </div>
+      </div>
+      
     <% end %>
   </tbody>
 </table>
+
+<div class = "row">　</div> 
+<div class = "row">　</div> 
+
+<div class = "row">
+  <div class = "col-md-1"><p>　</p></div>
+  <div class = "col-md-10">
+    <h4>フォロワー</h4>
+  </div>
+  <div class = "col-md-1"><p>　</p></div>
+  
+</div> 
+<table>
+  <tbody>
+    <% @follower.each do |follow| %>
+
+      <div class = "row text-center">
+        <div class = "col-md-1"><p>　</p></div>
+        <div class = "col-md-1"><p><%= image_tag(url_for(icon_of_users_path(follow.user_id)), size: '100x100') %></p></div>
+        <div class = "col-md-10">
+        <div class = "row">
+          <div class = "col-md-2"><p></p><p><%= follow.user.name %></p></div>
+          <div class = "col-md-2"><p></p><p><%= link_to 'プロフィール', profile_path(follow.user_id, key: 7) %></p></div>
+          <div class = "col-md-3">
+            <p></p><p>
+            <% member = open_member_record(follow.user_id) %>
+            <% if member.nil? %>
+              <%= form_for Room.new, url: rooms_path do |room| %>
+                <%= fields_for Member.new do |followed_user| %>
+                  <%= followed_user.hidden_field :follow.user_id, :value => follow.user_id %>
+                <% end %>
+                <%= button_tag "チャットを始める", type: "submit", id: "chat_submit", class: "form-control" %>
+              <% end %>
+            <% else %>
+              <%= link_to messages_path(room_id: member.room_id) do %>
+                <%= button_tag "チャットを続ける", id: "chat_submit", class: "form-control" %>
+              <% end %>
+            <% end %>
+            </p>
+          </div>
+          <div class = "col-md-3"><p></p><p>未読数:<%= non_read_message_by_user(follow.user_id) %></p></div>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
+<div class = "row">　</div> 
+<div class = "row">　</div> 
+<div class = "row">　</div> 
+<div class = "row">　</div> 
+
+<div class = "row">
+  <div class = "col-md-1"><p>　</p></div>
+  <div class = "col-md-10">
+    <%= link_to '戻る', chat_top_path %>
+  </div>
+  <div class = "col-md-1"><p>　</p></div>
+  
+</div>

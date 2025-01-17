@@ -15,10 +15,11 @@ ja:
       user:
         id: ＩＤ
         user_name: ユーザー名
+        password: パスワード
         password_digest: パスワード
         name: 利用者名
         grade: 学年
-        class: 組
+        klass: 組
         icon: アイコン
         profile: 自己紹介
         color: 背景色
@@ -30,11 +31,11 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
     
-      groups:
+      group:
         id: ＩＤ
         group_name: グループ名
         user_id: 作成者
-        comment: 一言
+        comment: グループ紹介
         hobby_1: 趣味１
         hobby_2: 趣味２
         hobby_3: 趣味３

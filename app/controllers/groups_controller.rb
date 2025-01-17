@@ -33,6 +33,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all.order(created_at: :desc)
     @group = []
+    @gmember_new = Groupmember.new
   end
 
   # id <> #{current_user.id} and
@@ -46,6 +47,7 @@ class GroupsController < ApplicationController
   def new
     @user = User.all.order( created_at: :desc )
     @group = Group.new
+    @gmember = Groupmember.new
   end
 
   # GET /groups/1/edit
@@ -65,6 +67,18 @@ class GroupsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
+
+    @gmember = Groupmember.new(groupmember_params)
+    
+    respond_to do |format|
+      if @gmember.save
+        format.html { redirect_to @gmember, notice: "Groupmember was successfully created." }
+        format.json { render :show, status: :created, location: @gmember }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @gmember.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -101,5 +115,9 @@ class GroupsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def group_params
       params.require(:group).permit(:group_name, :user_id, :comment, :hobby_1, :hobby_2, :hobby_3, :hobby_4, :hobby_5)
+    end
+
+    def groupmember_params
+      params.require(:groupmember).permit(:user_id, :group_id)
     end
 end

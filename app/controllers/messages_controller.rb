@@ -6,11 +6,14 @@ class MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @messages = @room.messages
     @followed_user = Member.find_by("room_id = ? and user_id <> ?", params[:room_id], current_user.id).user
+    updatemessage = @messages.where.not(user_id: current_user.id)
+    updatemessage.update(read: true)
     # @messages = Message.all
   end
 
   # GET /messages/1 or /messages/1.json
   def show
+
   end
 
   # GET /messages/new

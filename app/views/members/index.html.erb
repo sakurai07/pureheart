@@ -67,9 +67,9 @@
 <table>
   <tbody>
     <% @follower.each do |follow| %>
-      <% if follow.followed_user_id == current_user.id and check_follower(follow.followed_user_id) %>
+      <% if check_followed_user(follow.user_id) == false %>
 
-    <% else%>
+      
         <div class = "row text-center">
           <div class = "col-md-1"><p>　</p></div>
           <div class = "col-md-1"><p><%= image_tag(url_for(icon_of_users_path(follow.user_id)), size: '100x100') %></p></div>
@@ -83,7 +83,7 @@
               <% if member.nil? %>
                 <%= form_for Room.new, url: rooms_path do |room| %>
                   <%= fields_for Member.new do |followed_user| %>
-                    <%= followed_user.hidden_field :follow.user_id, :value => follow.user_id %>
+                    <%= followed_user.hidden_field :followed.user_id, :value => follow.user_id %>
                   <% end %>
                   <%= button_tag "チャットを始める", type: "submit", id: "chat_submit", class: "form-control" %>
                 <% end %>
@@ -98,6 +98,8 @@
           </div>
         </div>
         </div>
+      <% else%>
+      
       <% end %>
 
     <% end %>

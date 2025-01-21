@@ -1,3 +1,4 @@
+<p class = "<%= message.id %>"><%= image_tag(url_for(icon_of_users_path(message.user_id)), size:'50x50', class:'rounded-circle')%></p>
 <p class = "<%= message.id %>"><%= message.user.name %></p>
 <p class = "<%= message.id %>"><%= message.message %></p>
 <p class = "<%= message.id %>"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></p>

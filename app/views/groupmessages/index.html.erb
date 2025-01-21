@@ -17,6 +17,7 @@
   <div id = "messages" data-group_id = "<%= @group.id %>">
     <%= render @groupmessages %>
   </div>
+  <div id = final_line></div>
 
 </div>
 
@@ -28,6 +29,8 @@
 
 
 <script>
+  var element = document.getElementById('final_line');
+  element.scrollIntoView();
   var element = document.getElementById('groupmessage_input');
   element.scrollIntoView();
   element.focus();

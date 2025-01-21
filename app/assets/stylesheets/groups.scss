@@ -3,12 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .example2 span {
-    position: absolute;
-    font-size: 1rem;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    border-radius: 50%;
+    position: relative;
+    font-size: 20px;
+    width: 100px;
+    height: 100px;
+    line-height: 10px;
+    border-radius: 50%; //カラーを丸くする
     background-color: red;
     text-align: center;
 }

@@ -1,4 +1,4 @@
-<p class ="<%= groupmessage.id%>"><%= image_tag(url_for(icon_of_users_path(groupmessage.user_id)), size:'100x100', class:'rounded-circle')%></p>
+<p class ="<%= groupmessage.id%>"><%= image_tag(url_for(icon_of_users_path(groupmessage.user_id)), size:'50x50', class:'rounded-circle')%></p>
 <p class = "<%= groupmessage.id %>"><%= groupmessage.user.name %></p>
 <p class = "<%= groupmessage.id %>"><%= groupmessage.message %></p>
 <p class = "<%= groupmessage.id %>"><%= groupmessage.created_at.strftime("%Y/%m/%d %H:%M") %></p>

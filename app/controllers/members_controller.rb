@@ -6,6 +6,8 @@ class MembersController < ApplicationController
     @members = Member.all
     @follow = Follow.where("user_id=?", current_user.id)
     @follower = Follow.where("followed_user_id=?", current_user.id)
+
+    session[:key] = '7'
   end
 
   # GET /members/1 or /members/1.json

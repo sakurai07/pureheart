@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Groupmessage Read Checks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>User</th>
+      <th>Groupmessage</th>
+      <th>Read</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groupmessage_read_checks.each do |groupmessage_read_check| %>
+      <tr>
+        <td><%= groupmessage_read_check.group_id %></td>
+        <td><%= groupmessage_read_check.user_id %></td>
+        <td><%= groupmessage_read_check.groupmessage_id %></td>
+        <td><%= groupmessage_read_check.read %></td>
+        <td><%= link_to 'Show', groupmessage_read_check %></td>
+        <td><%= link_to 'Edit', edit_groupmessage_read_check_path(groupmessage_read_check) %></td>
+        <td><%= link_to 'Destroy', groupmessage_read_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Groupmessage Read Check', new_groupmessage_read_check_path %>

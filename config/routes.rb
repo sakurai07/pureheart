@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groupmessage_read_checks
   resources :members
   resources :messages
   resources :rooms

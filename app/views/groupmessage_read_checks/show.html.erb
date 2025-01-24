@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @groupmessage_read_check.group_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @groupmessage_read_check.user_id %>
+</p>
+
+<p>
+  <strong>Groupmessage:</strong>
+  <%= @groupmessage_read_check.groupmessage_id %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @groupmessage_read_check.read %>
+</p>
+
+<%= link_to 'Edit', edit_groupmessage_read_check_path(@groupmessage_read_check) %> |
+<%= link_to 'Back', groupmessage_read_checks_path %>

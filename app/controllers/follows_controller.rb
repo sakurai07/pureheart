@@ -43,7 +43,7 @@ class FollowsController < ApplicationController
     # respond_to do |format|
       if @follow.save
         # redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully created."
-        redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose]), notice: "follow was successfully created."
+        redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose])
         
         # format.html { redirect_to @follow, notice: "Follow was successfully created." }
         # format.json { render :show, status: :created, location: @follow }

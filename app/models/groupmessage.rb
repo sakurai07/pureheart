@@ -9,7 +9,7 @@ class Groupmessage < ApplicationRecord
 
   def create_read_check(data)
     Groupmember.where(group_id: data.group_id).where.not(user_id: data.user_id).each do |member|
-      GroupmessageReadCheck.create! group_id: member.group\id, user_id: member.user_id, groupmessage_id: data.id, read: false
+      GroupmessageReadCheck.create! group_id: member.group_id, user_id: member.user_id, groupmessage_id: data.id, read: false
     end
   end
 end

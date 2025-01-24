@@ -6,9 +6,10 @@ class GroupmessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @groupmessages = @group.groupmessages
 
-    # @groupmessages. each do |gm|
-    #   updatemessage = GroupmessageReadCheck.where(group_id: gm.group_id, user_id: current_user.id, groupmessage_id: gm.id, read: false)
-    # 上２行後回し
+    @groupmessages. each do |gm|
+      updatemessage = GroupmessageReadCheck.where(group_id: gm.group_id, user_id: current_user.id, groupmessage_id: gm.id, read: false)
+      updatemessage.update(read: true)
+    end
   end
 
   # GET /groupmessages/1 or /groupmessages/1.json

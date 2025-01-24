@@ -9,55 +9,58 @@
 </div> 
 <div class = "row">　</div> 
 
-
-<table>
-  <tbody>
-    <% @user.each do |user| %>
+<div style="overflow-x:hidden; auto;height:680px;">
+  <table>
+    <tbody>
+      <% @user.each do |user| %>
+        <div class = "row text-center">
+          <div class = "col-md-2"><p>　</p></div>
+          <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(user)), size: '100x100') %></p></div>
+          <div class = "col-md-8">
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p><%= user.name %></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(user.id , key_windowclose: 6), target: :_blank, rel: "noopener noreferrer" %> </p></div>
+            </div>
+            <div class = "row">
+              <div class = "col-md-2"><p>　</p></div>
+            </div>
+            <div class = "col-md-2"><p>　</p></div>
+          </div>
+        </div>
+      <% end %>
       <div class = "row text-center">
         <div class = "col-md-2"><p>　</p></div>
-        <div class = "col-md-2"><p><%= image_tag(url_for(icon_of_users_path(user)), size: '100x100') %></p></div>
         <div class = "col-md-8">
-          <div class = "row">
-            <div class = "col-md-2"><p>　</p></div>
-          </div>
-          <div class = "row">
-            <div class = "col-md-2"><p><%= user.name %></p></div><div class = "col-md-4"><p><%= link_to 'プロフィール', profile_path(user.id , key_windowclose: 6), target: :_blank, rel: "noopener noreferrer" %> </p></div>
-          </div>
-          <div class = "row">
-            <div class = "col-md-2"><p>　</p></div>
-          </div>
-          <div class = "col-md-2"><p>　</p></div>
+          <% if @user.size == 0 %>
+            <h5>検索結果がありませんでした</h5>
+          <% end %>
         </div>
+        <div class = "col-md-2"><p>　</p></div>  
       </div>
-    <% end %>
-    <div class = "row text-center">
-      <div class = "col-md-2"><p>　</p></div>
-      <div class = "col-md-8">
-        <% if @user.size == 0 %>
-          <h5>検索結果がありませんでした</h5>
-        <% end %>
-      </div>
-      <div class = "col-md-2"><p>　</p></div>  
+    </tbody>
+  </table>
+
+
+
+  <div class = "row text-center">
+    
+
+    <div class = "col-md-2"><p>　</p></div>
+    <div class = "col-md-8">
+      <h5><%= flash[:danger] %></h5>
+
     </div>
-  </tbody>
-</table>
+    <div class = "col-md-2"><p>　</p></div>
+    <div class = "row">　</div> 
+    <div class = "row">　</div>
+  </div> 
 
-
-<div class = "row text-center">
-  
-
-  <div class = "col-md-2"><p>　</p></div>
-  <div class = "col-md-8">
-    <h5><%= flash[:danger] %></h5>
-
-  </div>
-  <div class = "col-md-2"><p>　</p></div>
   <div class = "row">　</div> 
-  <div class = "row">　</div>
-</div> 
+  <div class = "row">　</div> 
 
-<div class = "row">　</div> 
-<div class = "row">　</div> 
+</div>
 
 
 

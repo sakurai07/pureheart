@@ -70,17 +70,7 @@ class GroupsController < ApplicationController
       end
     end
 
-    @gmember = Groupmember.new(groupmember_params)
-    
-    respond_to do |format|
-      if @gmember.save
-        format.html { redirect_to @gmember, notice: "Groupmember was successfully created." }
-        format.json { render :show, status: :created, location: @gmember }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @gmember.errors, status: :unprocessable_entity }
-      end
-    end
+    @gmember = Groupmember.new(group_id: @group.id, user_id: current_user.id)
   end
 
   # PATCH/PUT /groups/1 or /groups/1.json

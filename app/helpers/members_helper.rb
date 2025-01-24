@@ -9,4 +9,14 @@ module MembersHelper
     end
     return nil
   end
+
+  def check_followed_user(user_id)
+    
+    if Follow.where(user_id: current_user.id , followed_user_id: user_id).count == 0
+      return false
+    else
+      return true
+    end
+  end
+
 end

@@ -30,7 +30,7 @@ class BlocksController < ApplicationController
     # respond_to do |format|
       if @block.save
         # redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully created."
-        redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose]), notice: "block was successfully created."
+        redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose])
 
         # format.html { redirect_to @block, notice: "Block was successfully created." }
         # format.json { render :show, status: :created, location: @block }

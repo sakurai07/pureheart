@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_08_015550) do
+ActiveRecord::Schema.define(version: 2025_01_24_020444) do
 
   create_table "blocks", force: :cascade do |t|
     t.string "user_id"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2025_01_08_015550) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "followed_user_id"
+    t.string "user_id"
+    t.string "followed_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2025_01_08_015550) do
   create_table "groupmembers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "groupmessage_read_checks", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.integer "groupmessage_id"
+    t.boolean "read"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

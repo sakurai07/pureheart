@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2025_01_24_020444) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "read", default: false
+    t.boolean "read"
   end
 
   create_table "pictures", force: :cascade do |t|

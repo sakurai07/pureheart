@@ -26,7 +26,7 @@ class GroupmembersController < ApplicationController
 
     respond_to do |format|
       if @groupmember.save
-        format.html { redirect_to groupmessages_path(group_id: @groupmember.group_id), notice: "Groupmember was successfully created." }
+        format.html { redirect_to groupmessages_path(group_id: @groupmember.group_id)}
         format.json { render :show, status: :created, location: @groupmember }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class GroupmembersController < ApplicationController
   def update
     respond_to do |format|
       if @groupmember.update(groupmember_params)
-        format.html { redirect_to @groupmember, notice: "Groupmember was successfully updated." }
+        format.html { redirect_to @groupmember }
         format.json { render :show, status: :ok, location: @groupmember }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class GroupmembersController < ApplicationController
     @groupmember.destroy
 
     respond_to do |format|
-      format.html { redirect_to groupmembers_path, status: :see_other, notice: "Groupmember was successfully destroyed." }
+      format.html { redirect_to groupmembers_path, status: :see_other }
       format.json { head :no_content }
     end
   end

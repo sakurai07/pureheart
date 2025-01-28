@@ -36,7 +36,7 @@ class BlocksController < ApplicationController
         # format.json { render :show, status: :created, location: @block }
       else
         # redirect_to profile_path(@block.blocked_user_id), notice: "block was successfully failed."
-        redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose]), notice: "block was successfully failed."
+        redirect_to profile_path(@block.blocked_user_id, key_windowclose: params[:key_windowclose])
         # format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @block.errors, status: :unprocessable_entity }
       end
@@ -47,7 +47,7 @@ class BlocksController < ApplicationController
   def update
     respond_to do |format|
       if @block.update(block_params)
-        format.html { redirect_to @block, notice: "Block was successfully updated." }
+        format.html { redirect_to @block}
         format.json { render :show, status: :ok, location: @block }
       else
         format.html { render :edit, status: :unprocessable_entity }

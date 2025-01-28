@@ -25,7 +25,7 @@ class GroupmessageReadChecksController < ApplicationController
 
     respond_to do |format|
       if @groupmessage_read_check.save
-        format.html { redirect_to @groupmessage_read_check, notice: "Groupmessage read check was successfully created." }
+        format.html { redirect_to @groupmessage_read_check }
         format.json { render :show, status: :created, location: @groupmessage_read_check }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class GroupmessageReadChecksController < ApplicationController
   def update
     respond_to do |format|
       if @groupmessage_read_check.update(groupmessage_read_check_params)
-        format.html { redirect_to @groupmessage_read_check, notice: "Groupmessage read check was successfully updated." }
+        format.html { redirect_to @groupmessage_read_check }
         format.json { render :show, status: :ok, location: @groupmessage_read_check }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class GroupmessageReadChecksController < ApplicationController
     @groupmessage_read_check.destroy
 
     respond_to do |format|
-      format.html { redirect_to groupmessage_read_checks_path, status: :see_other, notice: "Groupmessage read check was successfully destroyed." }
+      format.html { redirect_to groupmessage_read_checks_path, status: :see_other }
       format.json { head :no_content }
     end
   end

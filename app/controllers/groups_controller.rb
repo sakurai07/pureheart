@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: "Group was successfully created." }
+        format.html { redirect_to @group }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: "Group was successfully updated." }
+        format.html { redirect_to @group }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -91,7 +91,7 @@ class GroupsController < ApplicationController
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_path, status: :see_other, notice: "Group was successfully destroyed." }
+      format.html { redirect_to groups_path, status: :see_other }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,5 @@
 <div class = "row">
+    <div class = "col-md-2"></div>
     <div class = "col-md-10">
         <%= form_with(model: @user,url:user_path(@user.id)) do |form| %>
             <% if @user.errors.any? %>
@@ -94,5 +95,5 @@
             <%= form.submit '更新', class: "btn btn-secondary" %>
         <% end %>
     </div>
-    <div class = "col-md-2"></div>
+
 </div>

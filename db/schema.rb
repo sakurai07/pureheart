@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2025_01_24_020444) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.string "user_id"
-    t.string "followed_user_id"
+    t.integer "user_id"
+    t.integer "followed_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2025_01_24_020444) do
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "read", default: false
+    t.boolean "read"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2025_01_24_020444) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "read", default: false
+    t.boolean "read"
   end
 
   create_table "pictures", force: :cascade do |t|

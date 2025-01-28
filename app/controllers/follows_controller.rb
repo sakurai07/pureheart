@@ -49,7 +49,7 @@ class FollowsController < ApplicationController
         # format.json { render :show, status: :created, location: @follow }
       else
         # redirect_to profile_path(@follow.followed_user_id), notice: "follow was successfully failed."
-        redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose]), notice: "follow was successfully failed."
+        redirect_to profile_path(@follow.followed_user_id, key_windowclose: params[:key_windowclose])
         # format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @follow.errors, status: :unprocessable_entity }
       end
@@ -60,7 +60,7 @@ class FollowsController < ApplicationController
   def update
     respond_to do |format|
       if @follow.update(follow_params)
-        format.html { redirect_to @follow, notice: "Follow was successfully updated." }
+        format.html { redirect_to @follow}
         format.json { render :show, status: :ok, location: @follow }
       else
         format.html { render :edit, status: :unprocessable_entity }
